@@ -1,5 +1,9 @@
-import { Person } from "./class.js"
+import { Move, Person } from "./class.js"
 
 
 const person=new Person()
-person.cons()
+const move =new  Move(person)
+
+person.positionBody = 11;
+console.log(person.positionBody)
+console.log(move.positionBody)
