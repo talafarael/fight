@@ -1,7 +1,8 @@
 export class Person{
-    
-       positionBody = 'a'; 
-  
+    positionBody;
+    constructor(position){
+       this.positionBody = position; 
+  }
     set positionBody(value){
         this.positionBody=value
     }
@@ -9,10 +10,30 @@ export class Person{
         return this.positionBody;
     }
 }
-export class Move extends Person{
-   positionBody=this.positionBody
-    set positionBody(value){
-        this.positionBody=value
+export class Move extends Person  {
+    constructor(positionBody){
+   super(positionBody)
+}
+   
+    moveForward(){
+        if(this.positionBody.positionBody.x<725){
+        this.positionBody.positionBody.x=this.positionBody.positionBody.x+10
+        return this.positionBody.positionBody
+    }
+        return this.positionBody.positionBody
+    }
+    moveBack(){
+        if(this.positionBody.positionBody.x>25){
+        this.positionBody.positionBody.x=this.positionBody.positionBody.x-10
+        return this.positionBody.positionBody
+    }
+        return this.positionBody.positionBody
+    }
+    jumpUp(){
+
+        this.positionBody.positionBody.y=this.positionBody.positionBody.y-10
+        return this.positionBody.positionBody
+    
     }
     get positionBody(){
          return this.positionBody;
