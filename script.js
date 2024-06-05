@@ -1,7 +1,7 @@
 import { Move, Person } from "./class.js"
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-
+let twoJump
 ctx.fillStyle = "green";
 canvas.width = 800;
 canvas.height = 600;
@@ -20,7 +20,7 @@ function draw() {
 
 
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keydown',async (event) => {
  
     if (event.key === 'd' || event.key === 'D') {
        arr= move.moveForward()
@@ -35,12 +35,19 @@ document.addEventListener('keydown', (event) => {
         draw();
      }
      if (event.key === 'w' || event.key === 'W') {
-        arr= move.jumpUp()
+						
+       let result= move.jumpUp().then((result) => {
+								if (result) {
+									twoJump=0
+								}
+				});
+				twoJump++
         setInterval(()=>{
-         arr= move.positionBody()
-         console.log( move.positionBody)
+								
+         arr= move.positionBody.positionBody
+         
           draw();
-        },1000)
+        },50)
        
      }
 });  
