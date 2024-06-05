@@ -5,6 +5,7 @@ let twoJump=0
 ctx.fillStyle = "green";
 canvas.width = 800;
 canvas.height = 600;
+let jump=''
 let arr={y:300,x:25}
 ctx.fillRect(arr.x,arr.y, 75, 75);
 
@@ -23,20 +24,22 @@ function draw() {
 document.addEventListener('keydown',async (event) => {
  
     if (event.key === 'd' || event.key === 'D') {
-       arr= move.moveForward()
-        console.log('Клавиша "d" нажата');
-       console.log(arr)
+      jump='right'
+       arr.x= move.moveForward().x
+      console.log('da')
        draw();
+       jump=''
     }
     if (event.key === 'a' || event.key === 'A') {
-        arr= move.moveBack()
-         console.log('Клавиша "d" нажата');
-        console.log(arr)
+      jump='left'
+        arr.x= move.moveBack().x
+        jump=''
         draw();
+        
      }
      if (event.key === 'w' || event.key === 'W') {
 						if(twoJump<2){
-       let result= move.jumpUp().then((result) => {
+       let result= move.jumpUp(jump).then((result) => {
 								if (result) {
 									twoJump=0
 								}

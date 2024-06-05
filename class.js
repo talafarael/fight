@@ -18,6 +18,7 @@ export class Move extends Person {
 
 	moveForward() {
 		if (this.positionBody.positionBody.x < 725) {
+            console.log('forward')
 			this.positionBody.positionBody.x =
 				this.positionBody.positionBody.x + 10
 			return this.positionBody.positionBody
@@ -32,18 +33,26 @@ export class Move extends Person {
 		}
 		return this.positionBody.positionBody
 	}
-	async jumpUp() {
+    
+	async jumpUp(rotate) {
 		return new Promise((resolve) => {
-            let position=-10
-            
+            let positionY=-10
+            let  positionX=0
 			let startPosition = this.positionBody.positionBody.y
 			
 			const startJump = setInterval(() => {
-				this.positionBody.positionBody.y +=position
+                if(rotate==='left'){
+                    positionX=-5
+                }
+                if(rotate==='right'){
+                    positionX=5
+                }
+				this.positionBody.positionBody.y +=positionY
+                this.positionBody.positionBody.x +=positionX
 				if (this.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
                     console.log('di')
-                    position=-10
+                    positionY=-10
                     this.stateDoubleJump=0
                     
                     
@@ -51,14 +60,14 @@ export class Move extends Person {
 				}
 
 				if (startPosition - 100 > this.positionBody.positionBody.y) {
-                    position=+10
+                    positionY=+10
 				
                     
                       
 							
 					
 				}  
-                console.log('aaaaaa')
+                
                 if (this.positionBody.positionBody.y === 300) {
                     console.log('null')
                             clearInterval(startJump)
@@ -73,6 +82,7 @@ export class Move extends Person {
             this.stateDoubleJump++
 		})
 	}
+
 	get positionBody() {
 		return this.positionBody
 	}
