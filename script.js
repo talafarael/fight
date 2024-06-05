@@ -1,7 +1,7 @@
 import { Move, Person } from "./class.js"
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-let twoJump
+let twoJump=0
 ctx.fillStyle = "green";
 canvas.width = 800;
 canvas.height = 600;
@@ -35,7 +35,7 @@ document.addEventListener('keydown',async (event) => {
         draw();
      }
      if (event.key === 'w' || event.key === 'W') {
-						
+						if(twoJump<2){
        let result= move.jumpUp().then((result) => {
 								if (result) {
 									twoJump=0
@@ -48,6 +48,6 @@ document.addEventListener('keydown',async (event) => {
          
           draw();
         },50)
-       
+       }
      }
 });  
