@@ -34,32 +34,43 @@ export class Move extends Person {
 	}
 	async jumpUp() {
 		return new Promise((resolve) => {
+            let position=-10
+            
 			let startPosition = this.positionBody.positionBody.y
-			this.stateDoubleJump++
+			
 			const startJump = setInterval(() => {
-				this.positionBody.positionBody.y -= 10
+				this.positionBody.positionBody.y +=position
 				if (this.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
                     console.log('di')
+                    position=-10
                     this.stateDoubleJump=0
-                    clearInterval(startJump); 
+                    
                     
                     return; 
 				}
-console.log(this.positionBody.positionBody.y)
+
 				if (startPosition - 100 > this.positionBody.positionBody.y) {
-                    console.log('end')
-					clearInterval(startJump)
-					const jumpEnd = setInterval(() => {
-						this.positionBody.positionBody.y += 10
-						if (this.positionBody.positionBody.y === 300) {
-                            console.log('aaaaa')
-							clearInterval(jumpEnd)
-							resolve(true)
-						}
-					}, 50)
-				}
+                    position=+10
+				
+                    
+                      
+							
+					
+				}  
+                console.log('aaaaaa')
+                if (this.positionBody.positionBody.y === 300) {
+                    console.log('null')
+                            clearInterval(startJump)
+                            this.stateDoubleJump=0
+                    
+                            resolve(true)
+                        }
 			}, 50)
+            if(this.stateDoubleJump === 1){
+                clearInterval(startJump)
+            }
+            this.stateDoubleJump++
 		})
 	}
 	get positionBody() {
