@@ -30,10 +30,10 @@ export class Move extends Person  {
         return this.positionBody.positionBody
     }
     jumpUp(){
-
+        setInterval(()=>{
         this.positionBody.positionBody.y=this.positionBody.positionBody.y-10
-        return this.positionBody.positionBody
-    
+        
+    },1000)
     }
     get positionBody(){
          return this.positionBody;

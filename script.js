@@ -36,8 +36,11 @@ document.addEventListener('keydown', (event) => {
      }
      if (event.key === 'w' || event.key === 'W') {
         arr= move.jumpUp()
-         console.log('Клавиша "d" нажата');
-        console.log(arr)
-        draw();
+        setInterval(()=>{
+         arr= move.positionBody()
+         console.log( move.positionBody)
+          draw();
+        },1000)
+       
      }
-});
+});  
