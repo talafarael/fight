@@ -7,7 +7,7 @@ export class Person {
 		this.positionBody = value
 	}
 	get positionBody() {
-		return this.positionBody
+		return positionBody
 	}
 }
 export class Move extends Person {
@@ -19,9 +19,8 @@ export class Move extends Person {
 	moveForward() {
 		if (this.positionBody.positionBody.x < 725) {
 			console.log("forward")
-			this.positionBody.positionBody.x =
-				this.positionBody.positionBody.x + 10
-			return this.positionBody.positionBody
+			this.positionBody.positionBody.x += 10
+		
 		}
 		return this.positionBody.positionBody
 	}
@@ -29,7 +28,7 @@ export class Move extends Person {
 		if (this.positionBody.positionBody.x > 25) {
 			this.positionBody.positionBody.x =
 				this.positionBody.positionBody.x - 10
-			return this.positionBody.positionBody
+			
 		}
 		return this.positionBody.positionBody
 	}
