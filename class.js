@@ -1,7 +1,9 @@
 export class Person {
 	positionBody
+	positionHead
 	constructor(position) {
 		this.positionBody = position
+		this.positionHead = {x:position.x+18.5,y: position.y-25}
 	}
 	
 }

@@ -10,15 +10,16 @@ canvas.width = 800;
 canvas.height = 600;
 let jump = '';
 let arr = { y: 300, x: 25 };
+ctx.fillRect(arr.x, arr.y, 55, 75);
 ctx.fillRect(arr.x, arr.y, 75, 75);
-
 const person = new Person(arr);
 const move = new Move(person);
 
 function draw() {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(arr.x, arr.y, 75, 75);
+    ctx.fillRect(arr.x, arr.y,  50, 75);
+    ctx.fillRect(arr.x+18.5, arr.y-25, 25, 25);
 }
 
 document.addEventListener('keydown', async (event) => {
