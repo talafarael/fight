@@ -1,11 +1,12 @@
 export class Person {
-	positionBody
-	positionHead
+	positionBody;
+	positionHead;
+	positionLegLeftFirstPart;
 	constructor(position) {
 		this.positionBody = position
-		this.positionHead = {x:position.x+18.5,y: position.y-25}
+		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
+		// positionLegLeft=
 	}
-	
 }
 export class Move extends Person {
 	constructor(positionBody) {
@@ -15,37 +16,38 @@ export class Move extends Person {
 
 	moveForward() {
 		if (this.positionBody.positionBody.x < 725) {
-			console.log("forward")
+
 			this.positionBody.positionBody.x += 10
-		
+			this.positionBody.positionHead.x += 10
 		}
-		return this.positionBody.positionBody
+		return this.positionBody
 	}
 	moveBack() {
 		if (this.positionBody.positionBody.x > 25) {
 			this.positionBody.positionBody.x =
 				this.positionBody.positionBody.x - 10
-			
+				this.positionBody.positionHead.x =	this.positionBody.positionHead.x - 10
+				
 		}
-		return this.positionBody.positionBody
+		return this.positionBody
 	}
 
-	 jumpUp(rotate) {
+	jumpUp(rotate) {
 		console.log(this.stateDoubleJump)
-		if(this.stateDoubleJump<2){
+		if (this.stateDoubleJump < 2) {
 			let positionY = -10
-			
+
 			let startPosition = this.positionBody.positionBody.y
 
 			const startJump = setInterval(() => {
 				if (rotate === "left") {
-					this.moveBack() 
+					this.moveBack()
 				}
 				if (rotate === "right") {
 					this.moveForward()
 				}
 				this.positionBody.positionBody.y += positionY
-		
+				this.positionBody.positionHead.y += positionY
 				if (this.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
 					console.log("di")
@@ -61,9 +63,8 @@ export class Move extends Person {
 					console.log("null")
 					this.stateDoubleJump = 0
 					clearInterval(startJump)
-					
-                    return 'aaa'
-					
+
+					return "aaa"
 				}
 			}, 50)
 			if (this.stateDoubleJump === 1) {
@@ -71,7 +72,6 @@ export class Move extends Person {
 			}
 			this.stateDoubleJump++
 		}
-	
 	}
 
 	get positionBody() {

@@ -11,15 +11,17 @@ canvas.height = 600;
 let jump = '';
 let arr = { y: 300, x: 25 };
 ctx.fillRect(arr.x, arr.y, 55, 75);
-ctx.fillRect(arr.x, arr.y, 75, 75);
+ctx.fillRect(arr.x+18.5, arr.y- 25,25,25);
+ctx.fillRect(arr.x+28, arr.y+75,25,45);
+ctx.fillRect(arr.x+3, arr.y+ 75,25,75);
 const person = new Person(arr);
 const move = new Move(person);
 
 function draw() {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(arr.x, arr.y,  50, 75);
-    ctx.fillRect(arr.x+18.5, arr.y-25, 25, 25);
+    ctx.fillRect(arr.positionBody.x, arr.positionBody.y,  50, 75);
+    ctx.fillRect(arr.positionHead.x, arr.positionHead.y, 25, 25);
 }
 
 document.addEventListener('keydown', async (event) => {
@@ -27,14 +29,14 @@ document.addEventListener('keydown', async (event) => {
 
     if (event.key === 'd' || event.key === 'D') {
        
-        arr.x = move.moveForward().x;
+        arr= move.moveForward();
         console.log('da');
         draw();
         
     }
     if (event.key === 'a' || event.key === 'A') {
         
-        arr.x = move.moveBack().x;
+        arr= move.moveBack();
         
         draw();
     }
@@ -51,7 +53,7 @@ document.addEventListener('keydown', async (event) => {
            move.jumpUp(direction)
             
             setInterval(() => {
-                arr = move.positionBody.positionBody;
+                arr = move.positionBody;
                 draw();
                 
             }, 50); 
