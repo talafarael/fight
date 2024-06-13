@@ -4,6 +4,7 @@ export class Person {
 	positionLegLeft
 	positionLegRight
 	positionHandRight
+	positionHandLeft
 	constructor(position) {
 		this.positionBody = position
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
@@ -19,10 +20,16 @@ export class Person {
 			sizeX: 25,
 			sizeY: 75,
 		}
-		this.positionHandRight = {
+		this.positionHandLeft = {
 			x: position.x ,
 			y: position.y +20,
 			sizeX:90,
+			sizeY: 18,
+		}
+		this.positionHandRight={
+			x: position.x ,
+			y: position.y+ 38,
+			sizeX: 65,
 			sizeY: 18,
 		}
 	}
