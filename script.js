@@ -1,68 +1,62 @@
-import { Move, Person } from "./class.js";
+import {Move, Person} from "./class.js"
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById("canvas")
+const ctx = canvas.getContext("2d")
 
-let pressedKeys = {}; // Define pressedKeys here
+let pressedKeys = {} // Define pressedKeys here
 
-ctx.fillStyle = "green";
-canvas.width = 800;
-canvas.height = 600;
-let jump = '';
-let arr = { y: 300, x: 25 };
-ctx.fillRect(arr.x, arr.y, 55, 75);
-ctx.fillRect(arr.x+18.5, arr.y- 25,25,25);
-ctx.fillRect(arr.x+28, arr.y+75,25,45);
-ctx.fillRect(arr.x+3, arr.y+ 75,25,75);
-const person = new Person(arr);
-const move = new Move(person);
+ctx.fillStyle = "green"
+canvas.width = 800
+canvas.height = 600
+let jump = ""
+let arr = {y: 300, x: 25}
+ctx.fillRect(arr.x, arr.y, 55, 75)
+ctx.fillRect(arr.x + 18.5, arr.y - 25, 25, 25)
+ctx.fillRect(arr.x + 35, arr.y + 75, 25, 75)
+ctx.fillRect(arr.x + 3, arr.y + 75, 25, 75)
+const person = new Person(arr)
+const move = new Move(person)
 
 function draw() {
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(arr.positionBody.x, arr.positionBody.y,  50, 75);
-    ctx.fillRect(arr.positionHead.x, arr.positionHead.y, 25, 25);
+	// Clear canvas
+	ctx.clearRect(0, 0, canvas.width, canvas.height)
+	ctx.fillRect(arr.positionBody.x, arr.positionBody.y, 50, 75)
+	ctx.fillRect(arr.positionHead.x, arr.positionHead.y, 25, 25)
+	ctx.fillRect(arr.positionLegLeft.x , arr.positionLegLeft.y , arr.positionLegRight.sizeX, arr.positionLegRight.sizeY)
+	ctx.fillRect(arr.positionLegRight.x , arr.positionLegRight.y ,  arr.positionLegLeft.sizeX, arr.positionLegLeft.sizeY)
 }
 
-document.addEventListener('keydown', async (event) => {
-    pressedKeys[event.key.toLowerCase()] = true;
+document.addEventListener("keydown", async (event) => {
+	pressedKeys[event.key.toLowerCase()] = true
 
-    if (event.key === 'd' || event.key === 'D') {
-       
-        arr= move.moveForward();
-        console.log('da');
-        draw();
-        
-    }
-    if (event.key === 'a' || event.key === 'A') {
-        
-        arr= move.moveBack();
-        
-        draw();
-    }
+	if (event.key === "d" || event.key === "D") {
+		arr = move.moveForward()
+		console.log("da")
+		draw()
+	}
+	if (event.key === "a" || event.key === "A") {
+		arr = move.moveBack()
 
-    if (event.key.toLowerCase() === 'w') {
-        
-            let direction = null;
-            if (pressedKeys['d']) {
-                direction = 'right';
-            } else if (pressedKeys['a']) {
-                direction = 'left';
-            }
+		draw()
+	}
 
-           move.jumpUp(direction)
-            
-            setInterval(() => {
-                arr = move.positionBody;
-                draw();
-                
-            }, 50); 
-            
-     
-      
-    }
-});
+	if (event.key.toLowerCase() === "w") {
+		let direction = null
+		if (pressedKeys["d"]) {
+			direction = "right"
+		} else if (pressedKeys["a"]) {
+			direction = "left"
+		}
 
-document.addEventListener('keyup', (event) => {
-    delete pressedKeys[event.key.toLowerCase()];
-});
+		move.jumpUp(direction)
+
+		setInterval(() => {
+			arr = move.positionBody
+			draw()
+		}, 50)
+	}
+})
+
+document.addEventListener("keyup", (event) => {
+	delete pressedKeys[event.key.toLowerCase()]
+})

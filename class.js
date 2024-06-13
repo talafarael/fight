@@ -1,11 +1,23 @@
 export class Person {
-	positionBody;
-	positionHead;
-	positionLegLeftFirstPart;
+	positionBody
+	positionHead
+	positionLegLeft
+	positionLegRight
 	constructor(position) {
 		this.positionBody = position
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
-		// positionLegLeft=
+		this.positionLegLeft = {
+			x: position.x + 35,
+			y: position.y + 75,
+			sizeX:25,
+			sizeY: 75
+		}
+		this.positionLegRight = {
+			x: position.x + 3,
+			y: position.y + 75,
+			sizeX:25,
+			sizeY: 75
+		}
 	}
 }
 export class Move extends Person {
@@ -16,9 +28,10 @@ export class Move extends Person {
 
 	moveForward() {
 		if (this.positionBody.positionBody.x < 725) {
-
 			this.positionBody.positionBody.x += 10
 			this.positionBody.positionHead.x += 10
+			this.positionBody.positionLegLeft.x += 10
+			this.positionBody.positionLegRight.x += 10
 		}
 		return this.positionBody
 	}
@@ -26,8 +39,12 @@ export class Move extends Person {
 		if (this.positionBody.positionBody.x > 25) {
 			this.positionBody.positionBody.x =
 				this.positionBody.positionBody.x - 10
-				this.positionBody.positionHead.x =	this.positionBody.positionHead.x - 10
-				
+			this.positionBody.positionHead.x =
+				this.positionBody.positionHead.x - 10
+			this.positionBody.positionLegRight.x =
+				this.positionBody.positionLegRight.x - 10
+			this.positionBody.positionLegLeft.x =
+				this.positionBody.positionLegLeft.x - 10
 		}
 		return this.positionBody
 	}
@@ -48,6 +65,8 @@ export class Move extends Person {
 				}
 				this.positionBody.positionBody.y += positionY
 				this.positionBody.positionHead.y += positionY
+				this.positionBody.positionLegLeft.y += positionY
+				this.positionBody.positionLegRight.y += positionY
 				if (this.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
 					console.log("di")
