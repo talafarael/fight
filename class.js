@@ -53,14 +53,10 @@ export class Move extends Person {
 	}
 	moveBack() {
 		if (this.positionBody.positionBody.x > 25) {
-			this.positionBody.positionBody.x =
-				this.positionBody.positionBody.x - 10
-			this.positionBody.positionHead.x =
-				this.positionBody.positionHead.x - 10
-			this.positionBody.positionLegRight.x =
-				this.positionBody.positionLegRight.x - 10
-			this.positionBody.positionLegLeft.x =
-				this.positionBody.positionLegLeft.x - 10
+			this.positionBody.positionBody.x+=- 10
+			this.positionBody.positionHead.x += - 10
+			this.positionBody.positionLegRight.x += - 10
+			this.positionBody.positionLegLeft.x +=- 10
 				this.positionBody.positionHandRight.x+=-10
 			this.positionBody.positionHandLeft.x+=-10
 		}
@@ -89,7 +85,13 @@ export class Move extends Person {
 				this.positionBody.positionBody.sizeY += size
 				this.positionBody.positionLegLeft.sizeY += size
 				this.positionBody.positionLegRight.sizeY += size
-
+				this.positionBody.positionHandRight.y += positionY*1.10
+				this.positionBody.positionHandLeft.y += positionY*1.10
+				
+				
+			
+				this.positionBody.positionLegRight.sizeY += positionY*0.1
+				
 				if (this.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
 
