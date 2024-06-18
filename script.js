@@ -69,6 +69,10 @@ document.addEventListener("keydown", async (event) => {
 		arr = move.moveBack()
 
 		draw()
+	}if (event.key === "s" || event.key === "S") {
+		arr = move.changeSide()
+
+		draw()
 	}
 
 	if (event.key.toLowerCase() === "w") {

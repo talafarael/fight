@@ -5,8 +5,10 @@ export class Person {
 	positionLegRight
 	positionHandRight
 	positionHandLeft
+	side
 	constructor(position) {
 		this.positionBody = position
+		this.side-'right'
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
 		this.positionLegLeft = {
 			x: position.x + 35,
@@ -50,6 +52,57 @@ export class Move extends Person {
 			this.positionBody.positionHandLeft.x+=10
 		}
 		return this.positionBody
+	}
+	changeSide(){
+		const position=this.positionBody.positionBody
+		if(this.positionBody.side=='left'){
+		
+		
+		this.positionBody.positionHead = {x: position.x + 18.5, y: position.y - 25}
+		this.positionBody.positionLegLeft = {
+			x: position.x + 35,
+			y: position.y + 75,
+			
+		}
+		this.positionBody.positionLegRight = {
+			x: position.x + 3,
+			y: position.y + 75,
+			
+		}
+		this.positionBody.positionHandLeft = {
+			x: position.x ,
+			y: position.y +20,
+			
+		}
+		this.positionBody.positionHandRight={
+			x: position.x ,
+			y: position.y+ 38,
+			sizeX: 65,
+			sizeY: 18,
+		}
+		return this.positionBody
+		}
+		this.positionBody.positionHead.x = position.x + 15.5, 
+		this.positionBody.positionLegLeft.x=position.x + 28,
+			
+		this.positionBody.positionLegRight.x = position.x - 5,
+			
+		this.positionBody.positionHandLeft = {
+			x: position.x ,
+			y: position.y +20,
+			
+		}
+		this.positionBody.positionHandRight={
+			x: position.x ,
+			y: position.y+ 38,
+			sizeX: 65,
+			sizeY: 18,
+		}
+		return this.positionBody
+		
+
+
+
 	}
 	moveBack() {
 		if (this.positionBody.positionBody.x > 25) {
