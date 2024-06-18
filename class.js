@@ -46,6 +46,8 @@ export class Move extends Person {
 			this.positionBody.positionHead.x += 10
 			this.positionBody.positionLegLeft.x += 10
 			this.positionBody.positionLegRight.x += 10
+			this.positionBody.positionHandRight.x+=10
+			this.positionBody.positionHandLeft.x+=10
 		}
 		return this.positionBody
 	}
@@ -59,6 +61,8 @@ export class Move extends Person {
 				this.positionBody.positionLegRight.x - 10
 			this.positionBody.positionLegLeft.x =
 				this.positionBody.positionLegLeft.x - 10
+				this.positionBody.positionHandRight.x+=-10
+			this.positionBody.positionHandLeft.x+=-10
 		}
 		return this.positionBody
 	}
