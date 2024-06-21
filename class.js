@@ -58,28 +58,16 @@ export class Move extends Person {
 		if(this.positionBody.side=='left'){
 		
 		
-		this.positionBody.positionHead = {x: position.x + 18.5, y: position.y - 25}
-		this.positionBody.positionLegLeft = {
-			x: position.x + 35,
-			y: position.y + 75,
+		this.positionBody.positionHead.x = position.x + 18.5,
+		this.positionBody.positionLegLeft.x =  position.x + 35,
+		
+		
+		this.positionBody.positionLegRight.x =  position.x + 3,
+		
+		this.positionBody.positionHandLeft.x =  position.x ,
 			
-		}
-		this.positionBody.positionLegRight = {
-			x: position.x + 3,
-			y: position.y + 75,
-			
-		}
-		this.positionBody.positionHandLeft = {
-			x: position.x ,
-			y: position.y +20,
-			
-		}
-		this.positionBody.positionHandRight={
-			x: position.x ,
-			y: position.y+ 38,
-			sizeX: 65,
-			sizeY: 18,
-		}
+		this.positionBody.positionHandRight.x=position.x 
+		this.positionBody.side='right'
 		return this.positionBody
 		}
 		this.positionBody.positionHead.x = position.x + 15.5, 
@@ -87,17 +75,11 @@ export class Move extends Person {
 			
 		this.positionBody.positionLegRight.x = position.x - 5,
 			
-		this.positionBody.positionHandLeft = {
-			x: position.x ,
-			y: position.y +20,
-			
-		}
-		this.positionBody.positionHandRight={
-			x: position.x ,
-			y: position.y+ 38,
-			sizeX: 65,
-			sizeY: 18,
-		}
+		this.positionBody.positionHandLeft.x= position.x-40 ,
+		
+		this.positionBody.positionHandRight.x= position.x-10 
+		this.positionBody.side='left'
+		
 		return this.positionBody
 		
 
