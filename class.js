@@ -6,9 +6,11 @@ export class Person {
 	positionHandRight
 	positionHandLeft
 	side
-	constructor(position) {
+	player
+	constructor(position, player) {
 		this.positionBody = position
-		this.side-'right'
+		this.player = player
+		this.side - "right"
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
 		this.positionLegLeft = {
 			x: position.x + 35,
@@ -23,17 +25,26 @@ export class Person {
 			sizeY: 75,
 		}
 		this.positionHandLeft = {
-			x: position.x ,
-			y: position.y +20,
-			sizeX:90,
+			x: position.x,
+			y: position.y + 20,
+			sizeX: 90,
 			sizeY: 18,
 		}
-		this.positionHandRight={
-			x: position.x ,
-			y: position.y+ 38,
+		this.positionHandRight = {
+			x: position.x,
+			y: position.y + 38,
 			sizeX: 65,
 			sizeY: 18,
 		}
+	}
+}
+export class Hit extends Person {
+	constructor(positionBody) {
+		super(positionBody)
+		this.stateDoubleJump = 0
+	}
+	HitHand() {
+		console.log(this.positionBody.positionHandLeft)
 	}
 }
 export class Move extends Person {
@@ -48,52 +59,39 @@ export class Move extends Person {
 			this.positionBody.positionHead.x += 10
 			this.positionBody.positionLegLeft.x += 10
 			this.positionBody.positionLegRight.x += 10
-			this.positionBody.positionHandRight.x+=10
-			this.positionBody.positionHandLeft.x+=10
+			this.positionBody.positionHandRight.x += 10
+			this.positionBody.positionHandLeft.x += 10
 		}
 		return this.positionBody
 	}
-	changeSide(){
-		const position=this.positionBody.positionBody
-		if(this.positionBody.side=='left'){
-		
-		
-		this.positionBody.positionHead.x = position.x + 18.5,
-		this.positionBody.positionLegLeft.x =  position.x + 35,
-		
-		
-		this.positionBody.positionLegRight.x =  position.x + 3,
-		
-		this.positionBody.positionHandLeft.x =  position.x ,
-			
-		this.positionBody.positionHandRight.x=position.x 
-		this.positionBody.side='right'
-		return this.positionBody
+	changeSide() {
+		const position = this.positionBody.positionBody
+		if (this.positionBody.side == "left") {
+			;(this.positionBody.positionHead.x = position.x + 18.5),
+				(this.positionBody.positionLegLeft.x = position.x + 35),
+				(this.positionBody.positionLegRight.x = position.x + 3),
+				(this.positionBody.positionHandLeft.x = position.x),
+				(this.positionBody.positionHandRight.x = position.x)
+			this.positionBody.side = "right"
+			return this.positionBody
 		}
-		this.positionBody.positionHead.x = position.x + 15.5, 
-		this.positionBody.positionLegLeft.x=position.x + 28,
-			
-		this.positionBody.positionLegRight.x = position.x - 5,
-			
-		this.positionBody.positionHandLeft.x= position.x-40 ,
-		
-		this.positionBody.positionHandRight.x= position.x-10 
-		this.positionBody.side='left'
-		
+		;(this.positionBody.positionHead.x = position.x + 15.5),
+			(this.positionBody.positionLegLeft.x = position.x + 28),
+			(this.positionBody.positionLegRight.x = position.x - 5),
+			(this.positionBody.positionHandLeft.x = position.x - 40),
+			(this.positionBody.positionHandRight.x = position.x - 10)
+		this.positionBody.side = "left"
+
 		return this.positionBody
-		
-
-
-
 	}
 	moveBack() {
 		if (this.positionBody.positionBody.x > 25) {
-			this.positionBody.positionBody.x+=- 10
-			this.positionBody.positionHead.x += - 10
-			this.positionBody.positionLegRight.x += - 10
-			this.positionBody.positionLegLeft.x +=- 10
-				this.positionBody.positionHandRight.x+=-10
-			this.positionBody.positionHandLeft.x+=-10
+			this.positionBody.positionBody.x += -10
+			this.positionBody.positionHead.x += -10
+			this.positionBody.positionLegRight.x += -10
+			this.positionBody.positionLegLeft.x += -10
+			this.positionBody.positionHandRight.x += -10
+			this.positionBody.positionHandLeft.x += -10
 		}
 		return this.positionBody
 	}
@@ -120,13 +118,11 @@ export class Move extends Person {
 				this.positionBody.positionBody.sizeY += size
 				this.positionBody.positionLegLeft.sizeY += size
 				this.positionBody.positionLegRight.sizeY += size
-				this.positionBody.positionHandRight.y += positionY*1.10
-				this.positionBody.positionHandLeft.y += positionY*1.10
-				
-				
-			
-				this.positionBody.positionLegRight.sizeY += positionY*0.1
-				
+				this.positionBody.positionHandRight.y += positionY * 1.1
+				this.positionBody.positionHandLeft.y += positionY * 1.1
+
+				this.positionBody.positionLegRight.sizeY += positionY * 0.1
+
 				if (this.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
 

@@ -1,4 +1,4 @@
-import {Move, Person} from "./class.js"
+import {Hit, Move, Person} from "./class.js"
 
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
@@ -16,11 +16,11 @@ ctx.fillRect(arr.x, arr.y + 38, 65, 18)
 ctx.fillRect(arr.x + 18.5, arr.y - 25, 25, 25)
 ctx.fillRect(arr.x + 35, arr.y + 75, 25, 75)
 ctx.fillRect(arr.x + 3, arr.y + 75, 25, 75)
-const person = new Person(arr)
+const person = new Person(arr,1)
 const move = new Move(person)
-
+const hit= new Hit(person)
 function draw() {
-	// Clear canvas
+	
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 	ctx.fillRect(
 		arr.positionBody.x,
@@ -63,7 +63,11 @@ document.addEventListener("keydown", async (event) => {
 	if (event.key === "d" || event.key === "D") {
 		arr = move.moveForward()
 		console.log("da")
-		draw()
+	 draw()
+	}
+	if (event.key === "q" || event.key === "Q") {
+ hit.HitHand()
+		
 	}
 	if (event.key === "a" || event.key === "A") {
 		arr = move.moveBack()
