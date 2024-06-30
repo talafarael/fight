@@ -19,41 +19,41 @@ ctx.fillRect(arr.x + 3, arr.y + 75, 25, 75)
 const person = new Person(arr,1)
 const move = new Move(person)
 const hit= new Hit(person)
-function draw() {
+function draw(position) {
 	
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 	ctx.fillRect(
-		arr.positionBody.x,
-		arr.positionBody.y,
-		arr.positionBody.sizeX,
-		arr.positionBody.sizeY
+		position.positionBody.x,
+		position.positionBody.y,
+		position.positionBody.sizeX,
+		position.positionBody.sizeY
 	)
-	ctx.fillRect(arr.positionHead.x, arr.positionHead.y, 25, 25)
-	ctx.fillRect(arr.positionHead.x, arr.positionHead.y, 25, 25)
+	ctx.fillRect(position.positionHead.x, position.positionHead.y, 25, 25)
+	ctx.fillRect(position.positionHead.x, position.positionHead.y, 25, 25)
 	ctx.fillRect(
-		arr.positionHandRight.x,
-		arr.positionHandRight.y,
-		arr.positionHandRight.sizeX,
-		arr.positionHandRight.sizeY
-	)
-	ctx.fillRect(
-		arr.positionHandLeft.x,
-		arr.positionHandLeft.y,
-		arr.positionHandLeft.sizeX,
-		arr.positionHandLeft.sizeY
+		position.positionHandRight.x,
+		position.positionHandRight.y,
+		position.positionHandRight.sizeX,
+		position.positionHandRight.sizeY
 	)
 	ctx.fillRect(
-		arr.positionLegLeft.x,
-		arr.positionLegLeft.y,
-		arr.positionLegRight.sizeX,
-		arr.positionLegRight.sizeY
+		position.positionHandLeft.x,
+		position.positionHandLeft.y,
+		position.positionHandLeft.sizeX,
+		position.positionHandLeft.sizeY
+	)
+	ctx.fillRect(
+		position.positionLegLeft.x,
+		position.positionLegLeft.y,
+		position.positionLegRight.sizeX,
+		position.positionLegRight.sizeY
 	)
 	
 	ctx.fillRect(
-		arr.positionLegRight.x,
-		arr.positionLegRight.y,
-		arr.positionLegLeft.sizeX,
-		arr.positionLegLeft.sizeY
+		position.positionLegRight.x,
+		position.positionLegRight.y,
+		position.positionLegLeft.sizeX,
+		position.positionLegLeft.sizeY
 	)
 }
 
@@ -61,22 +61,22 @@ document.addEventListener("keydown", async (event) => {
 	pressedKeys[event.key.toLowerCase()] = true
 
 	if (event.key === "d" || event.key === "D") {
-		arr = move.moveForward()
+		const position= move.moveForward()
 		console.log("da")
-	 draw()
+	 draw(position)
 	}
 	if (event.key === "q" || event.key === "Q") {
  hit.HitHand()
 		
 	}
 	if (event.key === "a" || event.key === "A") {
-		arr = move.moveBack()
+		const position = move.moveBack()
 
-		draw()
+		draw(position)
 	}if (event.key === "s" || event.key === "S") {
-		arr = move.changeSide()
+		const position = move.changeSide()
 
-		draw()
+		draw(position)
 	}
 
 	if (event.key.toLowerCase() === "w") {
@@ -90,8 +90,8 @@ document.addEventListener("keydown", async (event) => {
 		move.jumpUp(direction)
 
 		setInterval(() => {
-			arr = move.positionBody
-			draw()
+			const position = move.positionBody
+			draw(position)
 		}, 50)
 	}
 })

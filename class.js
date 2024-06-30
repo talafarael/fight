@@ -1,14 +1,6 @@
 export class Person {
-	positionBody
-	positionHead
-	positionLegLeft
-	positionLegRight
-	positionHandRight
-	positionHandLeft
-	side
-	player
 	constructor(position, player) {
-		this.positionBody = position
+		this.stateDoubleJump=0
 		this.player = player
 		this.side - "right"
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
@@ -18,6 +10,7 @@ export class Person {
 			sizeX: 25,
 			sizeY: 75,
 		}
+		this.positionBody =position
 		this.positionLegRight = {
 			x: position.x + 3,
 			y: position.y + 75,
@@ -38,19 +31,30 @@ export class Person {
 		}
 	}
 }
-export class Hit extends Person {
+export class Hit  {
 	constructor(positionBody) {
-		super(positionBody)
-		this.stateDoubleJump = 0
+		this.positionBody=positionBody
+		
 	}
 	HitHand() {
 		console.log(this.positionBody.positionHandLeft)
 	}
 }
-export class Move extends Person {
-	constructor(positionBody) {
-		super(positionBody)
-		this.stateDoubleJump = 0
+
+export class HealBarAndHit {
+	constructor(positionBody1,positionBody2) {
+		this.positionBody=positionBody
+		
+	}
+	
+}
+
+
+
+export class Move {
+	constructor(Position) {
+		this.positionBody=Position
+		// this.positionBody.stateDoubleJump = 0
 	}
 
 	moveForward() {
@@ -97,8 +101,8 @@ export class Move extends Person {
 	}
 
 	jumpUp(rotate) {
-		console.log(this.stateDoubleJump)
-		if (this.stateDoubleJump < 2) {
+		console.log(this.positionBody.stateDoubleJump)
+		if (this.positionBody.stateDoubleJump < 2) {
 			let positionY = -10
 			let size = -1.5
 			let startPosition = this.positionBody.positionBody.y
@@ -122,13 +126,13 @@ export class Move extends Person {
 				this.positionBody.positionHandLeft.y += positionY * 1.1
 
 				this.positionBody.positionLegRight.sizeY += positionY * 0.1
-
-				if (this.stateDoubleJump === 2) {
+     
+				if (this.positionBody.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
 
 					positionY = -10
 					size = -1.5
-					this.stateDoubleJump++
+					this.positionBody.stateDoubleJump++
 				}
 
 				if (startPosition - 100 > this.positionBody.positionBody.y) {
@@ -138,20 +142,18 @@ export class Move extends Person {
 
 				if (this.positionBody.positionBody.y === 300) {
 					console.log("null")
-					this.stateDoubleJump = 0
+					this.positionBody.stateDoubleJump = 0
 					clearInterval(startJump)
 
 					return "aaa"
 				}
 			}, 50)
-			if (this.stateDoubleJump === 1) {
+			if (this.positionBody.stateDoubleJump === 1) {
 				clearInterval(startJump)
 			}
-			this.stateDoubleJump++
+			this.positionBody.stateDoubleJump++
 		}
 	}
 
-	get positionBody() {
-		return this.positionBody
-	}
+
 }
