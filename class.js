@@ -1,6 +1,6 @@
 export class Person {
 	constructor(position, player) {
-		this.stateDoubleJump=0
+		this.stateDoubleJump = 0
 		this.player = player
 		this.side - "right"
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
@@ -10,7 +10,7 @@ export class Person {
 			sizeX: 25,
 			sizeY: 75,
 		}
-		this.positionBody =position
+		this.positionBody = position
 		this.positionLegRight = {
 			x: position.x + 3,
 			y: position.y + 75,
@@ -31,29 +31,30 @@ export class Person {
 		}
 	}
 }
-export class Hit  {
+export class Hit {
 	constructor(positionBody) {
-		this.positionBody=positionBody
-		
+		this.positionBody = positionBody
 	}
 	HitHand() {
-		console.log(this.positionBody.positionHandLeft)
+		let positionX = -10
+		if (this.positionBody.side == "right") {
+			let positionX = 10
+		}
+		const startHit = setInterval(() => {
+			this.positionBody.positionHandLeft.x+=positionX 
+		},50)
 	}
 }
 
 export class HealBarAndHit {
-	constructor(positionBody1,positionBody2) {
-		this.positionBody=positionBody
-		
+	constructor(positionBody1, positionBody2) {
+		this.positionBody = positionBody
 	}
-	
 }
-
-
 
 export class Move {
 	constructor(Position) {
-		this.positionBody=Position
+		this.positionBody = Position
 		// this.positionBody.stateDoubleJump = 0
 	}
 
@@ -126,7 +127,7 @@ export class Move {
 				this.positionBody.positionHandLeft.y += positionY * 1.1
 
 				this.positionBody.positionLegRight.sizeY += positionY * 0.1
-     
+
 				if (this.positionBody.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
 
@@ -154,6 +155,4 @@ export class Move {
 			this.positionBody.stateDoubleJump++
 		}
 	}
-
-
 }
