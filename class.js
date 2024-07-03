@@ -2,7 +2,8 @@ export class Person {
 	constructor(position, player) {
 		this.stateDoubleJump = 0
 		this.player = player
-		this.side - "right"
+		this.side = "right"
+		this.hit=0
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
 		this.positionLegLeft = {
 			x: position.x + 35,
@@ -36,13 +37,33 @@ export class Hit {
 		this.positionBody = positionBody
 	}
 	HitHand() {
-		let positionX = -10
+		if(this.positionBody.hit==0){
+		let positionAddX = -10
+		let side='left'
+		let position=0
+		let maximum=100
+		this.positionBody.hit+=1
 		if (this.positionBody.side == "right") {
-			let positionX = 10
+			console.log('aaa')
+			positionAddX = 10
+			side="right"
 		}
 		const startHit = setInterval(() => {
-			this.positionBody.positionHandLeft.x+=positionX 
+			this.positionBody.positionHandLeft.x+=positionAddX 
+			if(this.positionBody.side!=side){
+
+			}
+			position+=10
+			if(maximum==position){
+				position=-100
+				positionAddX=positionAddX*-1 
+			}
+			if(0==position){
+				this.positionBody.hit=0
+				clearInterval(startHit)
+			}
 		},50)
+	}
 	}
 }
 

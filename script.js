@@ -67,7 +67,11 @@ document.addEventListener("keydown", async (event) => {
 	}
 	if (event.key === "q" || event.key === "Q") {
  hit.HitHand()
-		
+ const startJump=setInterval(() => {
+	const position = move.positionBody
+
+	draw(position)
+}, 50)
 	}
 	if (event.key === "a" || event.key === "A") {
 		const position = move.moveBack()
@@ -89,8 +93,12 @@ document.addEventListener("keydown", async (event) => {
 
 		move.jumpUp(direction)
 
-		setInterval(() => {
+			const startJump=setInterval(() => {
 			const position = move.positionBody
+		if(move.positionBody.stateDoubleJump==0){
+			clearInterval(startJump)
+		}
+		console.log('aaaaaa')
 			draw(position)
 		}, 50)
 	}
