@@ -157,7 +157,7 @@ export class Move {
 			let positionY = -10
 			let size = -1.5
 			let startPosition = this.positionBody.positionBody.y
-
+let startSide=this.positionBody.side
 			const startJump = setInterval(() => {
 				if (rotate === "left") {
 					this.moveBack()
@@ -175,9 +175,11 @@ export class Move {
 				this.positionBody.positionLegRight.sizeY += size
 				this.positionBody.positionHandRight.y += positionY * 1.1
 				this.positionBody.positionHandLeft.y += positionY * 1.1
-
-				this.positionBody.positionLegRight.sizeY += positionY * 0.1
-
+				if (startSide == "right") {
+					this.positionBody.positionLegRight.sizeY += positionY * 0.1
+				} else {
+					this.positionBody.positionLegLeft.sizeY += positionY * 0.1
+				}
 				if (this.positionBody.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
 
