@@ -16,11 +16,10 @@ ctx.fillRect(arr.x, arr.y + 38, 65, 18)
 ctx.fillRect(arr.x + 18.5, arr.y - 25, 25, 25)
 ctx.fillRect(arr.x + 35, arr.y + 75, 25, 75)
 ctx.fillRect(arr.x + 3, arr.y + 75, 25, 75)
-const person = new Person(arr,1)
+const person = new Person(arr, 1)
 const move = new Move(person)
-const hit= new Hit(person)
+const hit = new Hit(person)
 function draw(position) {
-	
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 	ctx.fillRect(
 		position.positionBody.x,
@@ -48,7 +47,7 @@ function draw(position) {
 		position.positionLegRight.sizeX,
 		position.positionLegRight.sizeY
 	)
-	
+
 	ctx.fillRect(
 		position.positionLegRight.x,
 		position.positionLegRight.y,
@@ -61,25 +60,21 @@ document.addEventListener("keydown", async (event) => {
 	pressedKeys[event.key.toLowerCase()] = true
 
 	if (event.key === "d" || event.key === "D") {
-		const position= move.moveForward()
-		console.log("da")
-	 draw(position)
+		const position = move.moveForward()
+		draw(position)
 	}
-	if (event.key === "q" || event.key === "Q") {
- hit.HitHand()
- const startJump=setInterval(() => {
-	const position = move.positionBody
 
-	draw(position)
-}, 50)
+	if (event.key === "q" || event.key === "Q") {
+		hit.HitLeftHand()
+		moveInterval("hit")
 	}
+
 	if (event.key === "a" || event.key === "A") {
 		const position = move.moveBack()
-
 		draw(position)
-	}if (event.key === "s" || event.key === "S") {
+	}
+	if (event.key === "s" || event.key === "S") {
 		const position = move.changeSide()
-
 		draw(position)
 	}
 
@@ -90,20 +85,24 @@ document.addEventListener("keydown", async (event) => {
 		} else if (pressedKeys["a"]) {
 			direction = "left"
 		}
-
 		move.jumpUp(direction)
-
-			const startJump=setInterval(() => {
-			const position = move.positionBody
-		if(move.positionBody.stateDoubleJump==0){
-			clearInterval(startJump)
-		}
-		console.log('aaaaaa')
-			draw(position)
-		}, 50)
+		moveInterval("stateDoubleJump")
 	}
 })
+
 
 document.addEventListener("keyup", (event) => {
 	delete pressedKeys[event.key.toLowerCase()]
 })
+
+function moveInterval(counterEnd) {
+	const start = setInterval(() => {
+		const position = move.positionBody
+
+		if (move.positionBody[counterEnd] == 0) {
+			clearInterval(start)
+		}
+		console.log("aaaa")
+		draw(position)
+	}, 50)
+}

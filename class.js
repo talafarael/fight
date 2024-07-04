@@ -3,7 +3,7 @@ export class Person {
 		this.stateDoubleJump = 0
 		this.player = player
 		this.side = "right"
-		this.hit=0
+		this.hit = 0
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
 		this.positionLegLeft = {
 			x: position.x + 35,
@@ -36,34 +36,63 @@ export class Hit {
 	constructor(positionBody) {
 		this.positionBody = positionBody
 	}
-	HitHand() {
-		if(this.positionBody.hit==0){
-		let positionAddX = -10
-		let side='left'
-		let position=0
-		let maximum=100
-		this.positionBody.hit+=1
-		if (this.positionBody.side == "right") {
-			console.log('aaa')
-			positionAddX = 10
-			side="right"
-		}
-		const startHit = setInterval(() => {
-			this.positionBody.positionHandLeft.x+=positionAddX 
-			if(this.positionBody.side!=side){
+	HitLeftHand() {
+		if (this.positionBody.hit == 0) {
+			let positionAddX = -20
 
+			let side = "left"
+			let position = 0
+			let maximum = 4
+			let positionAddY = -5
+			this.positionBody.hit += 1
+			if (this.positionBody.side == "right") {
+				positionAddX = 15
+
+				side = "right"
 			}
-			position+=10
-			if(maximum==position){
-				position=-100
-				positionAddX=positionAddX*-1 
-			}
-			if(0==position){
-				this.positionBody.hit=0
-				clearInterval(startHit)
-			}
-		},50)
-	}
+			const startHit = setInterval(() => {
+				this.positionBody.positionHandLeft.sizeX += positionAddY * -1
+				this.positionBody.positionHandLeft.y += positionAddY
+
+				if (this.positionBody.side != side) {
+					side = this.positionBody.side
+					this.positionBody.positionHandLeft.sizeX = 100
+
+					this.positionBody.positionHandLeft.y =
+						this.positionBody.positionHandRight.y - 18 - 10
+
+					positionAddY = 0
+					if (side == "right") {
+						this.positionBody.positionHandLeft.x =
+							this.positionBody.positionBody.x
+						positionAddX = 15
+					}
+
+					if (side == "left") {
+						positionAddX = -20
+						this.positionBody.positionHandLeft.x =
+							this.positionBody.positionBody.x - 40
+					}
+
+					position = 0
+					maximum = maximum / 2
+				}
+
+				this.positionBody.positionHandLeft.x += positionAddX
+				position++
+
+				if (maximum == position) {
+					position = position * -1
+					positionAddY = 5
+					positionAddX = positionAddX * -1
+				}
+
+				if (0 == position) {
+					this.positionBody.hit = 0
+					clearInterval(startHit)
+				}
+			}, 50)
+		}
 	}
 }
 
