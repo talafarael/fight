@@ -10,15 +10,11 @@ canvas.width = 800
 canvas.height = 600
 let jump = ""
 let arr = {y: 300, x: 25, sizeX: 55, sizeY: 75}
-ctx.fillRect(arr.x, arr.y, 55, 75)
-ctx.fillRect(arr.x, arr.y + 20, 90, 18)
-ctx.fillRect(arr.x, arr.y + 38, 65, 18)
-ctx.fillRect(arr.x + 18.5, arr.y - 25, 25, 25)
-ctx.fillRect(arr.x + 35, arr.y + 75, 25, 75)
-ctx.fillRect(arr.x + 3, arr.y + 75, 25, 75)
-const person = new Person(arr, 1)
+
+const person = new Person(arr, 1,"right")
 const move = new Move(person)
 const hit = new Hit(person)
+draw(move.positionBody)
 function draw(position) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 	ctx.fillRect(

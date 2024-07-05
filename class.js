@@ -1,5 +1,6 @@
 export class Person {
-	constructor(position, player) {
+	constructor(position, player,side) {
+
 		this.stateDoubleJump = 0
 		this.player = player
 		this.side = "right"
@@ -30,6 +31,15 @@ export class Person {
 			sizeX: 65,
 			sizeY: 18,
 		}
+		if(side=="left"){
+			this.positionHead.x = position.x + 15.5,
+			this.positionLegLeft.x = position.x + 28,
+			this.positionLegRight.x = position.x - 5,
+			this.positionHandLeft.x = position.x - 40,
+			this.positionHandRight.x = position.x - 10
+		this.side = "left"
+		}
+		
 	}
 }
 export class Hit {
