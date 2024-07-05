@@ -144,7 +144,7 @@ function moveInterval(counterEnd) {
 		if (move.positionBody[counterEnd] == 0) {
 			clearInterval(start)
 		}
-		console.log("aaaa")
+		
 		draw(position,move1.positionBody)
 	}, 50)
 }

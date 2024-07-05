@@ -4,8 +4,9 @@ export class Person {
 		this.stateDoubleJump = 0
 		this.player = player
 		this.side = "right"
-		this.hit = 0
+		this.statusHit = 0
 		this.health=20
+		this.hit=0
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25,	sizeX: 25,
 			sizeY: 25}
 		this.positionLegLeft = {
@@ -101,6 +102,7 @@ export class Hit {
 				}
 
 				if (0 == position) {
+					
 					this.positionBody.hit = 0
 					clearInterval(startHit)
 				}
@@ -123,11 +125,24 @@ export class HealBarAndHit {
 		playerGetHit=this.positionBody1
 	
 	   }
-	console.log(playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX)
+	if(playerGetHit.statusHit ==0){
 	   if(playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX>=playerGetHit.positionHead.x
 		&& playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX<=playerGetHit.positionHead.x+playerGetHit.positionHead.sizeX+playerHit.positionHandLeft.sizeX){
+
+		if(playerHit.positionHandLeft.y>=playerGetHit.positionHead.y
+			&& playerHit.positionHandLeft.y<=playerGetHit.positionHead.y+playerGetHit.positionHead.sizeY+playerHit.positionHandLeft.sizeY){
+				playerGetHit.statusHit=1
 console.log('hit')
+				this.positionBody1=playerHit
+		 this.positionBody2=playerGetHit
+		 if(player==this.positionBody2.player){
+			this.positionBody2=playerHit
+		 this.positionBody1=playerGetHit
+		
+		   }
+}
 	   }
+	}
 
 
 	}
