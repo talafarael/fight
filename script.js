@@ -69,8 +69,9 @@ function draw(position,position1) {
 		position1.positionBody.sizeX,
 		position1.positionBody.sizeY
 	)
-	ctx.fillRect(position1.positionHead.x, position1.positionHead.y, 25, 25)
-	ctx.fillRect(position1.positionHead.x, position1.positionHead.y, 25, 25)
+	ctx.fillRect(position1.positionHead.x, position1.positionHead.y, position1.positionHead.sizeX,
+		position1.positionHead.sizeY)
+
 	ctx.fillRect(
 		position1.positionHandRight.x,
 		position1.positionHandRight.y,

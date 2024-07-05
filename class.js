@@ -64,9 +64,10 @@ export class Hit {
 				side = "right"
 			}
 			const startHit = setInterval(() => {
-				healBarAndHit.checkHit(this.positionBody.player)
+				
 				this.positionBody.positionHandLeft.sizeX += positionAddY * -1
 				this.positionBody.positionHandLeft.y += positionAddY
+
 
 				if (this.positionBody.side != side) {
 					side = this.positionBody.side
@@ -94,7 +95,12 @@ export class Hit {
 
 				this.positionBody.positionHandLeft.x += positionAddX
 				position++
-				
+				 const res=healBarAndHit.checkHit(this.positionBody.player)
+				if(res&&position>0){
+	
+	maximum=position
+	
+}
 				if (maximum == position) {
 					position = position * -1
 					positionAddY = 10
@@ -102,7 +108,7 @@ export class Hit {
 				}
 
 				if (0 == position) {
-					
+					this.positionBody.statusHit=0
 					this.positionBody.hit = 0
 					clearInterval(startHit)
 				}
@@ -125,14 +131,14 @@ export class HealBarAndHit {
 		playerGetHit=this.positionBody1
 	
 	   }
-	if(playerGetHit.statusHit ==0){
+	if(playerHit.statusHit ==0){
 	   if(playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX>=playerGetHit.positionHead.x
 		&& playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX<=playerGetHit.positionHead.x+playerGetHit.positionHead.sizeX+playerHit.positionHandLeft.sizeX){
 
 		if(playerHit.positionHandLeft.y>=playerGetHit.positionHead.y
 			&& playerHit.positionHandLeft.y<=playerGetHit.positionHead.y+playerGetHit.positionHead.sizeY+playerHit.positionHandLeft.sizeY){
-				playerGetHit.statusHit=1
-console.log('hit')
+				playerHit.statusHit=1
+
 				this.positionBody1=playerHit
 		 this.positionBody2=playerGetHit
 		 if(player==this.positionBody2.player){
@@ -140,10 +146,11 @@ console.log('hit')
 		 this.positionBody1=playerGetHit
 		
 		   }
+		  return true 
 }
 	   }
 	}
-
+return false
 
 	}
 }
