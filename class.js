@@ -5,6 +5,7 @@ export class Person {
 		this.player = player
 		this.side = "right"
 		this.hit = 0
+		this.health=20
 		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
 		this.positionLegLeft = {
 			x: position.x + 35,
@@ -46,14 +47,14 @@ export class Hit {
 	constructor(positionBody) {
 		this.positionBody = positionBody
 	}
-	HitLeftHand() {
+	HitLeftHand(healBarAndHit) {
 		if (this.positionBody.hit == 0) {
 			let positionAddX = -20
 
 			let side = "left"
 			let position = 0
 			let maximum = 4
-			let positionAddY = -5
+			let positionAddY = -10
 			this.positionBody.hit += 1
 			if (this.positionBody.side == "right") {
 				positionAddX = 15
@@ -61,6 +62,7 @@ export class Hit {
 				side = "right"
 			}
 			const startHit = setInterval(() => {
+				healBarAndHit.checkHit(this.positionBody.player)
 				this.positionBody.positionHandLeft.sizeX += positionAddY * -1
 				this.positionBody.positionHandLeft.y += positionAddY
 
@@ -69,7 +71,7 @@ export class Hit {
 					this.positionBody.positionHandLeft.sizeX = 100
 
 					this.positionBody.positionHandLeft.y =
-						this.positionBody.positionHandRight.y - 18 - 10
+						this.positionBody.positionHandRight.y - 18 - 20
 
 					positionAddY = 0
 					if (side == "right") {
@@ -90,10 +92,10 @@ export class Hit {
 
 				this.positionBody.positionHandLeft.x += positionAddX
 				position++
-
+				
 				if (maximum == position) {
 					position = position * -1
-					positionAddY = 5
+					positionAddY = 10
 					positionAddX = positionAddX * -1
 				}
 
@@ -108,7 +110,20 @@ export class Hit {
 
 export class HealBarAndHit {
 	constructor(positionBody1, positionBody2) {
-		this.positionBody = positionBody
+		this.positionBody1 = positionBody1
+		this.positionBody2 = positionBody2
+	}
+	checkHit(player){
+		let playerHit=this.positionBody1
+		let playerGetHit=this.positionBody2
+	
+       if(player==this.positionBody2.player){
+		playerHit=this.positionBody2
+		playerGetHit=this.positionBody1
+	
+	   }
+
+
 	}
 }
 
