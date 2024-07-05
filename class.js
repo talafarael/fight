@@ -6,7 +6,8 @@ export class Person {
 		this.side = "right"
 		this.hit = 0
 		this.health=20
-		this.positionHead = {x: position.x + 18.5, y: position.y - 25}
+		this.positionHead = {x: position.x + 18.5, y: position.y - 25,	sizeX: 25,
+			sizeY: 25}
 		this.positionLegLeft = {
 			x: position.x + 35,
 			y: position.y + 75,
@@ -121,6 +122,11 @@ export class HealBarAndHit {
 		playerHit=this.positionBody2
 		playerGetHit=this.positionBody1
 	
+	   }
+	console.log(playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX)
+	   if(playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX>=playerGetHit.positionHead.x
+		&& playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX<=playerGetHit.positionHead.x+playerGetHit.positionHead.sizeX+playerHit.positionHandLeft.sizeX){
+console.log('hit')
 	   }
 
 

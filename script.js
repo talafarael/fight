@@ -28,8 +28,9 @@ function draw(position,position1) {
 		position.positionBody.sizeX,
 		position.positionBody.sizeY
 	)
-	ctx.fillRect(position.positionHead.x, position.positionHead.y, 25, 25)
-	ctx.fillRect(position.positionHead.x, position.positionHead.y, 25, 25)
+	ctx.fillRect(position.positionHead.x, position.positionHead.y, position.positionHead.sizeX,
+		position.positionHead.sizeY)
+	
 	ctx.fillRect(
 		position.positionHandRight.x,
 		position.positionHandRight.y,
