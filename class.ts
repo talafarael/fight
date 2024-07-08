@@ -134,11 +134,14 @@ export class Hit {
 }
 
 export class HealBarAndHit {
-	constructor(positionBody1, positionBody2) {
-		this.positionBody1 = positionBody1
-		this.positionBody2 = positionBody2
+	positionBody1: Person;
+	positionBody2: Person;
+
+	constructor({ positionBody1, positionBody2 }: { positionBody1: Person, positionBody2: Person }) {
+		this.positionBody1 = positionBody1;
+		this.positionBody2 = positionBody2;
 	}
-	checkHit(player){
+	checkHit(player:1|2){
 		let playerHit=this.positionBody1
 		let playerGetHit=this.positionBody2
 	
@@ -172,7 +175,8 @@ return false
 }
 
 export class Move {
-	constructor(Position) {
+	positionBody:Person
+	constructor(Position:Person) {
 		this.positionBody = Position
 		// this.positionBody.stateDoubleJump = 0
 	}
