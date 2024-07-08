@@ -108,7 +108,7 @@ document.addEventListener("keydown", async (event) => {
 	}
 
 	if (event.key === "q" || event.key === "Q") {
-		hit.HitLeftHand(healBarAndHit)
+		hit.HitLeftHand()
 		moveInterval("hit")
 	}
 

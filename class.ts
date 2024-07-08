@@ -65,7 +65,7 @@ export class Hit {
     constructor({ positionBody }:IInheritance) {
         this.positionBody = positionBody;
     }
-	HitLeftHand(healBarAndHit) {
+	HitLeftHand() {
 		if (this.positionBody.hit == 0) {
 			let positionAddX = -20
 
@@ -111,12 +111,12 @@ export class Hit {
 
 				this.positionBody.positionHandLeft.x += positionAddX
 				position++
-				 const res=healBarAndHit.checkHit(this.positionBody.player)
-				if(res&&position>0){
+	// 			 const res=healBarAndHit.checkHit(this.positionBody.player)
+	// 			if(res&&position>0){
 	
-	maximum=position
+	// maximum=position
 	
-}
+// }
 				if (maximum == position) {
 					position = position * -1
 					positionAddY = 10
