@@ -139,14 +139,15 @@ document.addEventListener("keyup", (event) => {
 	delete pressedKeys[event.key.toLowerCase()]
 })
 
-function moveInterval(counterEnd) {
-	const start = setInterval(() => {
-		const position = move.positionBody
 
-		if (move.positionBody[counterEnd] == 0) {
-			clearInterval(start)
-		}
-		
-		draw(position,move1.positionBody)
-	}, 50)
+function moveInterval(counterEnd: keyof Person['positionBody']) {
+	const start = setInterval(() => {
+	  const position = move.positionBody;
+  
+	  if (move.positionBody[counterEnd] === 0) {
+		clearInterval(start);
+	  }
+  
+	  draw({position:position,position1:move1.positionBody})
+	},  50);
 }
