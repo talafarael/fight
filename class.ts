@@ -1,4 +1,4 @@
-import { IConstructor, IInheritance, IPosition } from "./type"
+import { IConstructor, IInheritance, IPosition, Side } from "./type"
 
 export class Person{
 	stateDoubleJump:number
@@ -224,7 +224,7 @@ export class Move {
 		return this.positionBody
 	}
 
-	jumpUp(rotate) {
+	jumpUp(rotate:Side) {
 		console.log(this.positionBody.stateDoubleJump)
 		if (this.positionBody.stateDoubleJump < 2) {
 			let positionY = -10

@@ -1,7 +1,8 @@
 import {HealBarAndHit, Hit, Move, Person} from "./class.js"
+import { IInheritance } from "./type.js"
 
-const canvas = document.getElementById("canvas")
-const ctx = canvas.getContext("2d")
+const canvas:any=document.getElementById("canvas") 
+const ctx: CanvasRenderingContext2D = canvas.getContext("2d")
 
 let pressedKeys = {} // Define pressedKeys here
 
@@ -11,7 +12,7 @@ canvas.height = 600
 let jump = ""
 let arr = {y: 300, x: 25, sizeX: 55, sizeY: 75}
 let arry = {y: 300, x: 325, sizeX: 55, sizeY: 75}
-const person = new Person(arr, 1:number,"right")
+const person = new Person({arr, 1,"right"})
 const move = new Move(person)
 const hit = new Hit(person)
 const person1 = new Person(arry, 2,"left")
