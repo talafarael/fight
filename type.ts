@@ -11,19 +11,9 @@ export interface IConstructor{
    player:1|2
    side:'left'|'right'
 }
+
 export interface IInheritance{
-    positionBody :{ stateDoubleJump:number
-	player:1|2
-	side:'left'|'right'
-	statusHit:number
-	health:number
-	hit:number
-	positionHead:IPosition
-	positionBody:IPosition
-	positionLegLeft:IPosition
-	positionLegRight:IPosition
-	positionHandLeft:IPosition
-	positionHandRight:IPosition}
+    positionBody :IClassInheritance
 }
 
 export interface IInheritance{
@@ -40,6 +30,21 @@ export interface IInheritance{
 	positionHandLeft:IPosition
 	positionHandRight:IPosition}
 }
-// export interface IClassInheritance{
-// 	positionBody:IInheritance
-// }
+export interface IClassInheritance{
+		 stateDoubleJump:number
+	player:1|2
+	side:'left'|'right'
+	statusHit:number
+	health:number
+	hit:number
+	positionHead:IPosition
+	positionBody:IPosition
+	positionLegLeft:IPosition
+	positionLegRight:IPosition
+	positionHandLeft:IPosition
+	positionHandRight:IPosition
+}
+export interface IPressedKeys {
+	[key: string]: boolean;
+  }
+  

@@ -19,7 +19,7 @@ canvas.height = 600;
 let jump = "";
 let arr = { y: 300, x: 25, sizeX: 55, sizeY: 75 };
 let arry = { y: 300, x: 325, sizeX: 55, sizeY: 75 };
-const person = new class_js_1.Person(arr, 1, "right");
+const person = new class_js_1.Person({ arr, 1: , "right":  });
 const move = new class_js_1.Move(person);
 const hit = new class_js_1.Hit(person);
 const person1 = new class_js_1.Person(arry, 2, "left");
@@ -50,7 +50,7 @@ document.addEventListener("keydown", (event) => __awaiter(void 0, void 0, void 0
         draw(position, move1.positionBody);
     }
     if (event.key === "q" || event.key === "Q") {
-        hit.HitLeftHand(healBarAndHit);
+        hit.HitLeftHand();
         moveInterval("hit");
     }
     if (event.key === "a" || event.key === "A") {

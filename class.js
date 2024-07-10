@@ -51,7 +51,7 @@ class Hit {
     constructor({ positionBody }) {
         this.positionBody = positionBody;
     }
-    HitLeftHand(healBarAndHit) {
+    HitLeftHand() {
         if (this.positionBody.hit == 0) {
             let positionAddX = -20;
             let side = "left";
@@ -87,10 +87,10 @@ class Hit {
                 }
                 this.positionBody.positionHandLeft.x += positionAddX;
                 position++;
-                const res = healBarAndHit.checkHit(this.positionBody.player);
-                if (res && position > 0) {
-                    maximum = position;
-                }
+                // 			 const res=healBarAndHit.checkHit(this.positionBody.player)
+                // 			if(res&&position>0){
+                // maximum=position
+                // }
                 if (maximum == position) {
                     position = position * -1;
                     positionAddY = 10;
@@ -107,7 +107,7 @@ class Hit {
 }
 exports.Hit = Hit;
 class HealBarAndHit {
-    constructor(positionBody1, positionBody2) {
+    constructor({ positionBody1, positionBody2 }) {
         this.positionBody1 = positionBody1;
         this.positionBody2 = positionBody2;
     }

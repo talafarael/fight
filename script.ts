@@ -1,27 +1,27 @@
 import {HealBarAndHit, Hit, Move, Person} from "./class.js"
-import { IInheritance } from "./type.js"
+import { IClassInheritance, IConstructor, IInheritance, IPosition, IPressedKeys } from "./type.js"
 
 const canvas:any=document.getElementById("canvas") 
 const ctx: CanvasRenderingContext2D = canvas.getContext("2d")
 
-let pressedKeys = {} // Define pressedKeys here
+let pressedKeys:IPressedKeys = {} // Define pressedKeys here
 
 ctx.fillStyle = "green"
 canvas.width = 800
 canvas.height = 600
 let jump = ""
-let arr = {y: 300, x: 25, sizeX: 55, sizeY: 75}
-let arry = {y: 300, x: 325, sizeX: 55, sizeY: 75}
-const person = new Person({arr, 1,"right"})
+let arr:IPosition = {y: 300, x: 25, sizeX: 55, sizeY: 75}
+let arry : IPosition= {y: 300, x: 325, sizeX: 55, sizeY: 75}
+const person = new Person({position:arr, player:1 , side:"right"}) 
 const move = new Move(person)
 const hit = new Hit(person)
-const person1 = new Person(arry, 2,"left")
+const person1 = new Person({position:arry, player:2,side:"left"})
 const move1 = new Move(person1)
 const hit1 = new Hit(person1)
-const healBarAndHit =new HealBarAndHit(person,person1)
-draw(move.positionBody,move1.positionBody)
+const healBarAndHit =new HealBarAndHit({positionBody1:person,positionBody2:person1})
+draw({position:move.positionBody, position1:move1.positionBody})
 
-function draw(position,position1) {
+function draw({position,position1}:{position:IClassInheritance,position1:IClassInheritance}) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 	ctx.fillRect(
 		position.positionBody.x,
@@ -105,7 +105,7 @@ document.addEventListener("keydown", async (event) => {
 
 	if (event.key === "d" || event.key === "D") {
 		const position = move.moveForward()
-		draw(position,move1.positionBody)
+		draw({position:position,position1:move1.positionBody})
 	}
 
 	if (event.key === "q" || event.key === "Q") {
@@ -115,11 +115,11 @@ document.addEventListener("keydown", async (event) => {
 
 	if (event.key === "a" || event.key === "A") {
 		const position = move.moveBack()
-		draw(position,move1.positionBody)
+		draw({position:position,position1:move1.positionBody})
 	}
 	if (event.key === "s" || event.key === "S") {
 		const position = move.changeSide()
-		draw(position,move1.positionBody)
+		draw({position:position,position1:move1.positionBody})
 	}
 
 	if (event.key.toLowerCase() === "w") {

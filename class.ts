@@ -62,8 +62,8 @@ export class Person{
 export class Hit {
 	positionBody: Person;
 
-    constructor({ positionBody }:IInheritance) {
-        this.positionBody = positionBody;
+    constructor(Position:Person) {
+        this.positionBody = Position;
     }
 	HitLeftHand() {
 		if (this.positionBody.hit == 0) {
@@ -224,7 +224,7 @@ export class Move {
 		return this.positionBody
 	}
 
-	jumpUp(rotate:Side) {
+	jumpUp(rotate:string | null) {
 		console.log(this.positionBody.stateDoubleJump)
 		if (this.positionBody.stateDoubleJump < 2) {
 			let positionY = -10
