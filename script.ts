@@ -140,7 +140,7 @@ document.addEventListener("keyup", (event) => {
 })
 
 
-function moveInterval(counterEnd: keyof Person['positionBody']) {
+function moveInterval(counterEnd: keyof Person) {
 	const start = setInterval(() => {
 	  const position = move.positionBody;
   
