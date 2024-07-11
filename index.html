@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.13/system.js">
+  </script>
 </head>
 <body>
     <canvas id="canvas"></canvas>
+    <script type="text/javascript">
+    // index.js is the transpiled index.ts
+    SystemJS.import('/script.js');</script>
 </body>
-<script type="module" src="script.js"></script>
+<!-- <script>var exports = {};</script> -->
+
 </html>

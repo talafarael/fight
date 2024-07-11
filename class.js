@@ -48,8 +48,8 @@ class Person {
 }
 exports.Person = Person;
 class Hit {
-    constructor({ positionBody }) {
-        this.positionBody = positionBody;
+    constructor(Position) {
+        this.positionBody = Position;
     }
     HitLeftHand() {
         if (this.positionBody.hit == 0) {
