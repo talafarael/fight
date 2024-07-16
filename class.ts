@@ -174,24 +174,13 @@ return false
 	}
 }
 
-export class Move {
+export class Jump {
 	positionBody:Person
 	constructor(Position:Person) {
 		this.positionBody = Position
 		// this.positionBody.stateDoubleJump = 0
 	}
 
-	moveForward() {
-		if (this.positionBody.positionBody.x < 725) {
-			this.positionBody.positionBody.x += 10
-			this.positionBody.positionHead.x += 10
-			this.positionBody.positionLegLeft.x += 10
-			this.positionBody.positionLegRight.x += 10
-			this.positionBody.positionHandRight.x += 10
-			this.positionBody.positionHandLeft.x += 10
-		}
-		return this.positionBody
-	}
 	changeSide() {
 		const position = this.positionBody.positionBody
 		if (this.positionBody.side == "left") {
@@ -212,17 +201,7 @@ export class Move {
 
 		return this.positionBody
 	}
-	moveBack() {
-		if (this.positionBody.positionBody.x > 25) {
-			this.positionBody.positionBody.x += -10
-			this.positionBody.positionHead.x += -10
-			this.positionBody.positionLegRight.x += -10
-			this.positionBody.positionLegLeft.x += -10
-			this.positionBody.positionHandRight.x += -10
-			this.positionBody.positionHandLeft.x += -10
-		}
-		return this.positionBody
-	}
+
 
 	jumpUp(rotate:string | null) {
 		console.log(this.positionBody.stateDoubleJump)
@@ -232,12 +211,12 @@ export class Move {
 			let startPosition = this.positionBody.positionBody.y
 let startSide=this.positionBody.side
 			const startJump = setInterval(() => {
-				if (rotate === "left") {
-					this.moveBack()
-				}
-				if (rotate === "right") {
-					this.moveForward()
-				}
+				// if (rotate === "left") {
+				// 	moveBac()
+				// }
+				// if (rotate === "right") {
+				// 	this.moveForward()
+				// }
 
 				this.positionBody.positionBody.y += positionY
 				this.positionBody.positionHead.y += positionY

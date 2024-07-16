@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const class_js_1 = require("./class.js");
+const move_js_1 = require("./move.js");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 let pressedKeys = {}; // Define pressedKeys here
@@ -11,10 +12,10 @@ let jump = "";
 let arr = { y: 300, x: 25, sizeX: 55, sizeY: 75 };
 let arry = { y: 300, x: 325, sizeX: 55, sizeY: 75 };
 const person = new class_js_1.Person({ position: arr, player: 1, side: "right" });
-const move = new class_js_1.Move(person);
+const move = new move_js_1.Move(person);
 const hit = new class_js_1.Hit(person);
 const person1 = new class_js_1.Person({ position: arry, player: 2, side: "left" });
-const move1 = new class_js_1.Move(person1);
+const move1 = new move_js_1.Move(person1);
 const hit1 = new class_js_1.Hit(person1);
 const healBarAndHit = new class_js_1.HealBarAndHit({ positionBody1: person, positionBody2: person1 });
 draw({ position: move.positionBody, position1: move1.positionBody });
@@ -37,30 +38,30 @@ function draw({ position, position1 }) {
 document.addEventListener("keydown", (event) => {
     pressedKeys[event.key.toLowerCase()] = true;
     if (event.key === "d" || event.key === "D") {
-        const position = move.moveForward();
-        draw({ position: position, position1: move1.positionBody });
+        move.moveForward();
+        draw({ position: person, position1: person1 });
     }
     if (event.key === "q" || event.key === "Q") {
         hit.HitLeftHand();
         moveInterval("hit");
     }
     if (event.key === "a" || event.key === "A") {
-        const position = move.moveBack();
-        draw({ position: position, position1: move1.positionBody });
+        move.moveBack();
+        draw({ position: person, position1: person1 });
     }
     if (event.key === "s" || event.key === "S") {
-        const position = move.changeSide();
-        draw({ position: position, position1: move1.positionBody });
+        // const position = move.changeSide();
+        // draw({ position: position, position1: move1.positionBody });
     }
     if (event.key.toLowerCase() === "w") {
         let direction = null;
         if (pressedKeys["d"]) {
-            direction = "right";
+            move.moveForward();
         }
         else if (pressedKeys["a"]) {
-            direction = "left";
+            move.moveForward();
         }
-        move.jumpUp(direction);
+        // move.jumpUp(direction);
         moveInterval("stateDoubleJump");
     }
 });

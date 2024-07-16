@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Move = exports.HealBarAndHit = exports.Hit = exports.Person = void 0;
+exports.Jump = exports.HealBarAndHit = exports.Hit = exports.Person = void 0;
 class Person {
     constructor({ position, player, side }) {
         this.stateDoubleJump = 0;
@@ -138,21 +138,10 @@ class HealBarAndHit {
     }
 }
 exports.HealBarAndHit = HealBarAndHit;
-class Move {
+class Jump {
     constructor(Position) {
         this.positionBody = Position;
         // this.positionBody.stateDoubleJump = 0
-    }
-    moveForward() {
-        if (this.positionBody.positionBody.x < 725) {
-            this.positionBody.positionBody.x += 10;
-            this.positionBody.positionHead.x += 10;
-            this.positionBody.positionLegLeft.x += 10;
-            this.positionBody.positionLegRight.x += 10;
-            this.positionBody.positionHandRight.x += 10;
-            this.positionBody.positionHandLeft.x += 10;
-        }
-        return this.positionBody;
     }
     changeSide() {
         const position = this.positionBody.positionBody;
@@ -175,17 +164,6 @@ class Move {
         this.positionBody.side = "left";
         return this.positionBody;
     }
-    moveBack() {
-        if (this.positionBody.positionBody.x > 25) {
-            this.positionBody.positionBody.x += -10;
-            this.positionBody.positionHead.x += -10;
-            this.positionBody.positionLegRight.x += -10;
-            this.positionBody.positionLegLeft.x += -10;
-            this.positionBody.positionHandRight.x += -10;
-            this.positionBody.positionHandLeft.x += -10;
-        }
-        return this.positionBody;
-    }
     jumpUp(rotate) {
         console.log(this.positionBody.stateDoubleJump);
         if (this.positionBody.stateDoubleJump < 2) {
@@ -194,12 +172,12 @@ class Move {
             let startPosition = this.positionBody.positionBody.y;
             let startSide = this.positionBody.side;
             const startJump = setInterval(() => {
-                if (rotate === "left") {
-                    this.moveBack();
-                }
-                if (rotate === "right") {
-                    this.moveForward();
-                }
+                // if (rotate === "left") {
+                // 	moveBac()
+                // }
+                // if (rotate === "right") {
+                // 	this.moveForward()
+                // }
                 this.positionBody.positionBody.y += positionY;
                 this.positionBody.positionHead.y += positionY;
                 this.positionBody.positionLegLeft.y += positionY * 1.25;
@@ -239,4 +217,4 @@ class Move {
         }
     }
 }
-exports.Move = Move;
+exports.Jump = Jump;

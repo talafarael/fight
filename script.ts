@@ -1,5 +1,6 @@
 
-import { HealBarAndHit, Hit, Move, Person } from "./class.js";
+import { HealBarAndHit, Hit, Person } from "./class.js";
+import { Move } from "./move.js";
 import { IClassInheritance, IConstructor, IInheritance, IPosition, IPressedKeys } from "./type.js";
 
 const canvas: HTMLCanvasElement = document.getElementById("canvas") as HTMLCanvasElement; 
@@ -44,8 +45,8 @@ document.addEventListener("keydown", (event) => {
     pressedKeys[event.key.toLowerCase()] = true;
 
     if (event.key === "d" || event.key === "D") {
-        const position = move.moveForward();
-        draw({ position: position, position1: move1.positionBody });
+        move.moveForward();
+        draw({ position: person, position1:person1});
     }
 
     if (event.key === "q" || event.key === "Q") {
@@ -54,22 +55,22 @@ document.addEventListener("keydown", (event) => {
     }
 
     if (event.key === "a" || event.key === "A") {
-        const position = move.moveBack();
-        draw({ position: position, position1: move1.positionBody });
+         move.moveBack();
+         draw({ position: person, position1:person1});
     }
     if (event.key === "s" || event.key === "S") {
-        const position = move.changeSide();
-        draw({ position: position, position1: move1.positionBody });
+        // const position = move.changeSide();
+        // draw({ position: position, position1: move1.positionBody });
     }
 
     if (event.key.toLowerCase() === "w") {
         let direction = null;
         if (pressedKeys["d"]) {
-            direction = "right";
+            move.moveForward();
         } else if (pressedKeys["a"]) {
-            direction = "left";
+            move.moveForward();
         }
-        move.jumpUp(direction);
+        // move.jumpUp(direction);
         moveInterval("stateDoubleJump");
     }
 });
