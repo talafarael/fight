@@ -1,5 +1,6 @@
 
 import { HealBarAndHit, Hit, Person } from "./class.js";
+import { Jump } from "./jump.js";
 import { Move } from "./move.js";
 import { IClassInheritance, IConstructor, IInheritance, IPosition, IPressedKeys } from "./type.js";
 
@@ -11,12 +12,13 @@ let pressedKeys: IPressedKeys = {}; // Define pressedKeys here
 ctx.fillStyle = "green";
 canvas.width = 800;
 canvas.height = 600;
-let jump = "";
+// let jump = "";
 let arr: IPosition = { y: 300, x: 25, sizeX: 55, sizeY: 75 };
 let arry: IPosition = { y: 300, x: 325, sizeX: 55, sizeY: 75 };
 const person = new Person({ position: arr, player: 1, side: "right" });
 const move = new Move(person);
 const hit = new Hit(person);
+const jump=new Jump(person)
 const person1 = new Person({ position: arry, player: 2, side: "left" });
 const move1 = new Move(person1);
 const hit1 = new Hit(person1);
@@ -66,11 +68,11 @@ document.addEventListener("keydown", (event) => {
     if (event.key.toLowerCase() === "w") {
         let direction = null;
         if (pressedKeys["d"]) {
-            move.moveForward();
+            // move.moveForward(d);
         } else if (pressedKeys["a"]) {
-            move.moveForward();
+            // move.moveForward();
         }
-        // move.jumpUp(direction);
+        jump.jump(direction);
         moveInterval("stateDoubleJump");
     }
 });

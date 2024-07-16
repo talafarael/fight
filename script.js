@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const class_js_1 = require("./class.js");
+const jump_js_1 = require("./jump.js");
 const move_js_1 = require("./move.js");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -8,12 +9,13 @@ let pressedKeys = {}; // Define pressedKeys here
 ctx.fillStyle = "green";
 canvas.width = 800;
 canvas.height = 600;
-let jump = "";
+// let jump = "";
 let arr = { y: 300, x: 25, sizeX: 55, sizeY: 75 };
 let arry = { y: 300, x: 325, sizeX: 55, sizeY: 75 };
 const person = new class_js_1.Person({ position: arr, player: 1, side: "right" });
 const move = new move_js_1.Move(person);
 const hit = new class_js_1.Hit(person);
+const jump = new jump_js_1.Jump(person);
 const person1 = new class_js_1.Person({ position: arry, player: 2, side: "left" });
 const move1 = new move_js_1.Move(person1);
 const hit1 = new class_js_1.Hit(person1);
@@ -56,12 +58,12 @@ document.addEventListener("keydown", (event) => {
     if (event.key.toLowerCase() === "w") {
         let direction = null;
         if (pressedKeys["d"]) {
-            move.moveForward();
+            // move.moveForward(d);
         }
         else if (pressedKeys["a"]) {
-            move.moveForward();
+            // move.moveForward();
         }
-        // move.jumpUp(direction);
+        jump.jump(direction);
         moveInterval("stateDoubleJump");
     }
 });
