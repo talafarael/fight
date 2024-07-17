@@ -1,9 +1,10 @@
 import { Person } from "./class"
 export interface Movable {
+	
     moveForward(): void;
     moveBack(): void;
 }
-export class Move implements Movable {
+export class Move  implements Movable {
 	positionBody:Person
 	constructor(Position:Person) {
 		this.positionBody = Position

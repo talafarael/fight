@@ -1,3 +1,4 @@
+import { Movable } from "./move"
 import { IConstructor, IInheritance, IPosition, Side } from "./type"
 
 export class Person{
@@ -175,9 +176,12 @@ return false
 }
 
 export class Jump {
+	private movable: Movable;
 	positionBody:Person
-	constructor(Position:Person) {
-		this.positionBody = Position
+	constructor(movable: Movable,Position:Person) {
+		
+        this.positionBody = Position
+		this.movable = movable;
 		// this.positionBody.stateDoubleJump = 0
 	}
 

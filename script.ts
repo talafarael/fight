@@ -18,7 +18,8 @@ let arry: IPosition = { y: 300, x: 325, sizeX: 55, sizeY: 75 };
 const person = new Person({ position: arr, player: 1, side: "right" });
 const move = new Move(person);
 const hit = new Hit(person);
-const jump=new Jump(person)
+const jump = new Jump( move,person );
+
 const person1 = new Person({ position: arry, player: 2, side: "left" });
 const move1 = new Move(person1);
 const hit1 = new Hit(person1);

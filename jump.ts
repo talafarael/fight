@@ -1,11 +1,12 @@
 import { Person } from "./class"
+import { Movable } from "./move";
 
 export class Jump {
 	positionBody:Person
-    private animationFrame: number | null = null;
-	constructor(Position:Person) {
+	private movable: Movable;
+	constructor(movable: Movable,Position:Person) {
         this.positionBody = Position
-    //    this.move=
+		this.movable = movable;
     }
    
     jump(rotate:string | null) {

@@ -2,10 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Jump = void 0;
 class Jump {
-    constructor(Position) {
-        this.animationFrame = null;
+    constructor(movable, Position) {
         this.positionBody = Position;
-        //    this.move=
+        this.movable = movable;
     }
     jump(rotate) {
         console.log(this.positionBody.stateDoubleJump);

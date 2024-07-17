@@ -139,8 +139,9 @@ class HealBarAndHit {
 }
 exports.HealBarAndHit = HealBarAndHit;
 class Jump {
-    constructor(Position) {
+    constructor(movable, Position) {
         this.positionBody = Position;
+        this.movable = movable;
         // this.positionBody.stateDoubleJump = 0
     }
     changeSide() {
