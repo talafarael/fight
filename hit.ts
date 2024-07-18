@@ -1,7 +1,7 @@
 import { IPerson, Person } from "./class";
 
 export interface IHit  {
-	
+	HitLeftHand() :void
   
 }
 

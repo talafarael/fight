@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const changeSide_js_1 = require("./changeSide.js");
 const class_js_1 = require("./class.js");
+const hit_js_1 = require("./hit.js");
 const jump_js_1 = require("./jump.js");
 const move_js_1 = require("./move.js");
 const canvas = document.getElementById("canvas");
@@ -15,12 +16,12 @@ let arr = { y: 300, x: 25, sizeX: 55, sizeY: 75 };
 let arry = { y: 300, x: 325, sizeX: 55, sizeY: 75 };
 const person = new class_js_1.Person({ position: arr, player: 1, side: "right" });
 const move = new move_js_1.Move(person);
-const hit = new class_js_1.Hit(person);
+const hit = new hit_js_1.Hit(person);
 const jump = new jump_js_1.Jump(move, person);
 const changeSide = new changeSide_js_1.ChangeSide(person);
 const person1 = new class_js_1.Person({ position: arry, player: 2, side: "left" });
 const move1 = new move_js_1.Move(person1);
-const hit1 = new class_js_1.Hit(person1);
+const hit1 = new hit_js_1.Hit(person1);
 const healBarAndHit = new class_js_1.HealBarAndHit({ positionBody1: person, positionBody2: person1 });
 draw();
 function draw() {

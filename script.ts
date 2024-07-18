@@ -1,6 +1,7 @@
 
 import { ChangeSide } from "./changeSide.js";
-import { HealBarAndHit, Hit, Person } from "./class.js";
+import { HealBarAndHit,  Person } from "./class.js";
+import { Hit } from "./hit.js";
 import { Jump } from "./jump.js";
 import { Move } from "./move.js";
 import { IClassInheritance, IConstructor, IInheritance, IPosition, IPressedKeys } from "./type.js";
