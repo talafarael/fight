@@ -44,7 +44,7 @@ document.addEventListener("keydown", (event) => {
     }
     if (event.key === "s" || event.key === "S") {
         changeSide.changeSide();
-        // draw({ position: position, position1: move1.positionBody });
+        draw();
     }
     if (event.key.toLowerCase() === "w") {
         let direction = null;

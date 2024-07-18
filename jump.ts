@@ -8,7 +8,7 @@ export class Jump {
         this.positionBody = Position
 		this.movable = movable;
     }
-   
+  
     jump(rotate:string | null) {
 		console.log(this.positionBody.stateDoubleJump)
 		if (this.positionBody.stateDoubleJump < 2) {
@@ -23,25 +23,14 @@ let startSide=this.positionBody.side
 				if (rotate === "right") {
 					this.movable.moveForward()
 				}
+          
+				this.movejumpUp(positionY)
+				this.changeJump(startSide,positionY)
+this.sizeJump(size)
 
-				this.positionBody.positionBody.y += positionY
-				this.positionBody.positionHead.y += positionY
-				this.positionBody.positionLegLeft.y += positionY * 1.25
-				this.positionBody.positionLegRight.y += positionY * 1.25
-				this.positionBody.positionBody.sizeY += size
-				this.positionBody.positionLegLeft.sizeY += size
-				this.positionBody.positionLegRight.sizeY += size
-				this.positionBody.positionHandRight.y += positionY * 1.1
-				this.positionBody.positionHandLeft.y += positionY * 1.1
-				if (startSide == "right") {
-					this.positionBody.positionLegRight.sizeY += positionY * 0.1
-				} else {
-					this.positionBody.positionLegLeft.sizeY += positionY * 0.1
-				}
 				if (this.positionBody.stateDoubleJump === 2) {
 					startPosition = this.positionBody.positionBody.y
-
-					positionY = -10
+                    positionY = -10
 					size = -1.5
 					this.positionBody.stateDoubleJump++
 				}
@@ -65,4 +54,26 @@ let startSide=this.positionBody.side
 			this.positionBody.stateDoubleJump++
 		}
 	}
+	private changeJump(startSide:string,positionY:number){
+		if (startSide == "right") {
+			this.positionBody.positionLegRight.sizeY += positionY * 0.1
+		} else {
+			this.positionBody.positionLegLeft.sizeY += positionY * 0.1
+		}
+	}
+	private sizeJump(size:number){
+		this.positionBody.positionBody.sizeY += size
+		this.positionBody.positionLegLeft.sizeY += size
+		this.positionBody.positionLegRight.sizeY += size
+	}
+	private movejumpUp(positionY:number){
+	
+	this.positionBody.positionBody.y += positionY
+	this.positionBody.positionHead.y += positionY
+	this.positionBody.positionLegLeft.y += positionY * 1.25
+	this.positionBody.positionLegRight.y += positionY * 1.25
+	
+	this.positionBody.positionHandRight.y += positionY * 1.1
+	this.positionBody.positionHandLeft.y += positionY * 1.1
+   }
 }

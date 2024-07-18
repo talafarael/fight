@@ -20,21 +20,9 @@ class Jump {
                 if (rotate === "right") {
                     this.movable.moveForward();
                 }
-                this.positionBody.positionBody.y += positionY;
-                this.positionBody.positionHead.y += positionY;
-                this.positionBody.positionLegLeft.y += positionY * 1.25;
-                this.positionBody.positionLegRight.y += positionY * 1.25;
-                this.positionBody.positionBody.sizeY += size;
-                this.positionBody.positionLegLeft.sizeY += size;
-                this.positionBody.positionLegRight.sizeY += size;
-                this.positionBody.positionHandRight.y += positionY * 1.1;
-                this.positionBody.positionHandLeft.y += positionY * 1.1;
-                if (startSide == "right") {
-                    this.positionBody.positionLegRight.sizeY += positionY * 0.1;
-                }
-                else {
-                    this.positionBody.positionLegLeft.sizeY += positionY * 0.1;
-                }
+                this.movejumpUp(positionY);
+                this.changeJump(startSide, positionY);
+                this.sizeJump(size);
                 if (this.positionBody.stateDoubleJump === 2) {
                     startPosition = this.positionBody.positionBody.y;
                     positionY = -10;
@@ -57,6 +45,27 @@ class Jump {
             }
             this.positionBody.stateDoubleJump++;
         }
+    }
+    changeJump(startSide, positionY) {
+        if (startSide == "right") {
+            this.positionBody.positionLegRight.sizeY += positionY * 0.1;
+        }
+        else {
+            this.positionBody.positionLegLeft.sizeY += positionY * 0.1;
+        }
+    }
+    sizeJump(size) {
+        this.positionBody.positionBody.sizeY += size;
+        this.positionBody.positionLegLeft.sizeY += size;
+        this.positionBody.positionLegRight.sizeY += size;
+    }
+    movejumpUp(positionY) {
+        this.positionBody.positionBody.y += positionY;
+        this.positionBody.positionHead.y += positionY;
+        this.positionBody.positionLegLeft.y += positionY * 1.25;
+        this.positionBody.positionLegRight.y += positionY * 1.25;
+        this.positionBody.positionHandRight.y += positionY * 1.1;
+        this.positionBody.positionHandLeft.y += positionY * 1.1;
     }
 }
 exports.Jump = Jump;
