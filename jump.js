@@ -14,12 +14,12 @@ class Jump {
             let startPosition = this.positionBody.positionBody.y;
             let startSide = this.positionBody.side;
             const startJump = setInterval(() => {
-                // if (rotate === "left") {
-                // 	moveBac()
-                // }
-                // if (rotate === "right") {
-                // 	this.moveForward()
-                // }
+                if (rotate === "left") {
+                    this.movable.moveBack();
+                }
+                if (rotate === "right") {
+                    this.movable.moveForward();
+                }
                 this.positionBody.positionBody.y += positionY;
                 this.positionBody.positionHead.y += positionY;
                 this.positionBody.positionLegLeft.y += positionY * 1.25;

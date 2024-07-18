@@ -1,4 +1,5 @@
 
+import { ChangeSide } from "./changeSide.js";
 import { HealBarAndHit, Hit, Person } from "./class.js";
 import { Jump } from "./jump.js";
 import { Move } from "./move.js";
@@ -19,7 +20,7 @@ const person = new Person({ position: arr, player: 1, side: "right" });
 const move = new Move(person);
 const hit = new Hit(person);
 const jump = new Jump( move,person );
-
+const changeSide =new ChangeSide(person)
 const person1 = new Person({ position: arry, player: 2, side: "left" });
 const move1 = new Move(person1);
 const hit1 = new Hit(person1);
@@ -62,16 +63,16 @@ document.addEventListener("keydown", (event) => {
          draw({ position: person, position1:person1});
     }
     if (event.key === "s" || event.key === "S") {
-        // const position = move.changeSide();
+      changeSide.changeSide();
         // draw({ position: position, position1: move1.positionBody });
     }
 
     if (event.key.toLowerCase() === "w") {
         let direction = null;
         if (pressedKeys["d"]) {
-            // move.moveForward(d);
+            direction='right'
         } else if (pressedKeys["a"]) {
-            // move.moveForward();
+            direction='left'
         }
         jump.jump(direction);
         moveInterval("stateDoubleJump");

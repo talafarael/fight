@@ -15,8 +15,7 @@ export class Person{
 	positionHandLeft:IPosition
 	positionHandRight:IPosition
 	constructor({position, player,side}:IConstructor) {
-
-		this.stateDoubleJump = 0
+        this.stateDoubleJump = 0
 		this.player = player
 		this.side = "right"
 		this.statusHit = 0
@@ -175,92 +174,5 @@ return false
 	}
 }
 
-export class Jump {
-	private movable: Movable;
-	positionBody:Person
-	constructor(movable: Movable,Position:Person) {
-		
-        this.positionBody = Position
-		this.movable = movable;
-		// this.positionBody.stateDoubleJump = 0
-	}
-
-	changeSide() {
-		const position = this.positionBody.positionBody
-		if (this.positionBody.side == "left") {
-			;(this.positionBody.positionHead.x = position.x + 18.5),
-				(this.positionBody.positionLegLeft.x = position.x + 35),
-				(this.positionBody.positionLegRight.x = position.x + 3),
-				(this.positionBody.positionHandLeft.x = position.x),
-				(this.positionBody.positionHandRight.x = position.x)
-			this.positionBody.side = "right"
-			return this.positionBody
-		}
-		;(this.positionBody.positionHead.x = position.x + 15.5),
-			(this.positionBody.positionLegLeft.x = position.x + 28),
-			(this.positionBody.positionLegRight.x = position.x - 5),
-			(this.positionBody.positionHandLeft.x = position.x - 40),
-			(this.positionBody.positionHandRight.x = position.x - 10)
-		this.positionBody.side = "left"
-
-		return this.positionBody
-	}
 
 
-	jumpUp(rotate:string | null) {
-		console.log(this.positionBody.stateDoubleJump)
-		if (this.positionBody.stateDoubleJump < 2) {
-			let positionY = -10
-			let size = -1.5
-			let startPosition = this.positionBody.positionBody.y
-let startSide=this.positionBody.side
-			const startJump = setInterval(() => {
-				// if (rotate === "left") {
-				// 	moveBac()
-				// }
-				// if (rotate === "right") {
-				// 	this.moveForward()
-				// }
-
-				this.positionBody.positionBody.y += positionY
-				this.positionBody.positionHead.y += positionY
-				this.positionBody.positionLegLeft.y += positionY * 1.25
-				this.positionBody.positionLegRight.y += positionY * 1.25
-				this.positionBody.positionBody.sizeY += size
-				this.positionBody.positionLegLeft.sizeY += size
-				this.positionBody.positionLegRight.sizeY += size
-				this.positionBody.positionHandRight.y += positionY * 1.1
-				this.positionBody.positionHandLeft.y += positionY * 1.1
-				if (startSide == "right") {
-					this.positionBody.positionLegRight.sizeY += positionY * 0.1
-				} else {
-					this.positionBody.positionLegLeft.sizeY += positionY * 0.1
-				}
-				if (this.positionBody.stateDoubleJump === 2) {
-					startPosition = this.positionBody.positionBody.y
-
-					positionY = -10
-					size = -1.5
-					this.positionBody.stateDoubleJump++
-				}
-
-				if (startPosition - 100 > this.positionBody.positionBody.y) {
-					positionY = +10
-					size = +1.5
-				}
-
-				if (this.positionBody.positionBody.y === 300) {
-					console.log("null")
-					this.positionBody.stateDoubleJump = 0
-					clearInterval(startJump)
-
-					return "aaa"
-				}
-			}, 50)
-			if (this.positionBody.stateDoubleJump === 1) {
-				clearInterval(startJump)
-			}
-			this.positionBody.stateDoubleJump++
-		}
-	}
-}

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const changeSide_js_1 = require("./changeSide.js");
 const class_js_1 = require("./class.js");
 const jump_js_1 = require("./jump.js");
 const move_js_1 = require("./move.js");
@@ -16,6 +17,7 @@ const person = new class_js_1.Person({ position: arr, player: 1, side: "right" }
 const move = new move_js_1.Move(person);
 const hit = new class_js_1.Hit(person);
 const jump = new jump_js_1.Jump(move, person);
+const changeSide = new changeSide_js_1.ChangeSide(person);
 const person1 = new class_js_1.Person({ position: arry, player: 2, side: "left" });
 const move1 = new move_js_1.Move(person1);
 const hit1 = new class_js_1.Hit(person1);
@@ -52,16 +54,16 @@ document.addEventListener("keydown", (event) => {
         draw({ position: person, position1: person1 });
     }
     if (event.key === "s" || event.key === "S") {
-        // const position = move.changeSide();
+        changeSide.changeSide();
         // draw({ position: position, position1: move1.positionBody });
     }
     if (event.key.toLowerCase() === "w") {
         let direction = null;
         if (pressedKeys["d"]) {
-            // move.moveForward(d);
+            direction = 'right';
         }
         else if (pressedKeys["a"]) {
-            // move.moveForward();
+            direction = 'left';
         }
         jump.jump(direction);
         moveInterval("stateDoubleJump");
