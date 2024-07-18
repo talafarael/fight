@@ -1,13 +1,13 @@
-import { Person } from "./class"
+import { IPerson, Person } from "./class"
 export interface Movable {
 	
     moveForward(): void;
     moveBack(): void;
 }
 export class Move implements Movable {
-    private positionBody: Person;
+    private positionBody: IPerson;
 
-    constructor(positionBody: Person) {
+    constructor(positionBody: IPerson) {
         this.positionBody = positionBody;
     }
 

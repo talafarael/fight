@@ -1,7 +1,22 @@
 import { Movable } from "./move"
 import { IConstructor, IInheritance, IPosition, Side } from "./type"
 
-export class Person{
+export interface IPerson{
+	stateDoubleJump:number
+	player:1|2
+	side:'left'|'right'
+	statusHit:number
+	health:number
+	hit:number
+	positionHead:IPosition
+	positionBody:IPosition
+	positionLegLeft:IPosition
+	positionLegRight:IPosition
+	positionHandLeft:IPosition
+	positionHandRight:IPosition
+	draw(ctx: CanvasRenderingContext2D): void;
+}
+export class Person implements IPerson{
 	stateDoubleJump:number
 	player:1|2
 	side:'left'|'right'
@@ -58,6 +73,14 @@ export class Person{
 		}
 		
 	}
+	draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillRect(this.positionBody.x, this.positionBody.y, this.positionBody.sizeX, this.positionBody.sizeY);
+        ctx.fillRect(this.positionHead.x, this.positionHead.y, this.positionHead.sizeX, this.positionHead.sizeY);
+        ctx.fillRect(this.positionHandRight.x, this.positionHandRight.y, this.positionHandRight.sizeX, this.positionHandRight.sizeY);
+        ctx.fillRect(this.positionHandLeft.x, this.positionHandLeft.y, this.positionHandLeft.sizeX, this.positionHandLeft.sizeY);
+        ctx.fillRect(this.positionLegLeft.x, this.positionLegLeft.y, this.positionLegRight.sizeX, this.positionLegRight.sizeY);
+        ctx.fillRect(this.positionLegRight.x, this.positionLegRight.y, this.positionLegLeft.sizeX, this.positionLegLeft.sizeY);
+    }
 }
 export class Hit {
 	positionBody: Person;

@@ -1,8 +1,8 @@
-import { Person } from "./class"
+import { IPerson, Person } from "./class"
 
 export class ChangeSide   {
-	positionBody:Person
-	constructor(Position:Person) {
+	positionBody:IPerson
+	constructor(Position:IPerson) {
 		this.positionBody = Position
 		// this.positionBody.stateDoubleJump = 0
 	}

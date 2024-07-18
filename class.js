@@ -45,6 +45,14 @@ class Person {
             this.side = "left";
         }
     }
+    draw(ctx) {
+        ctx.fillRect(this.positionBody.x, this.positionBody.y, this.positionBody.sizeX, this.positionBody.sizeY);
+        ctx.fillRect(this.positionHead.x, this.positionHead.y, this.positionHead.sizeX, this.positionHead.sizeY);
+        ctx.fillRect(this.positionHandRight.x, this.positionHandRight.y, this.positionHandRight.sizeX, this.positionHandRight.sizeY);
+        ctx.fillRect(this.positionHandLeft.x, this.positionHandLeft.y, this.positionHandLeft.sizeX, this.positionHandLeft.sizeY);
+        ctx.fillRect(this.positionLegLeft.x, this.positionLegLeft.y, this.positionLegRight.sizeX, this.positionLegRight.sizeY);
+        ctx.fillRect(this.positionLegRight.x, this.positionLegRight.y, this.positionLegLeft.sizeX, this.positionLegLeft.sizeY);
+    }
 }
 exports.Person = Person;
 class Hit {

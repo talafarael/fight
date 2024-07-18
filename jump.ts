@@ -1,10 +1,10 @@
-import { Person } from "./class"
+import { IPerson, Person } from "./class"
 import { Movable } from "./move";
 
 export class Jump {
-	positionBody:Person
+	positionBody:IPerson
 	private movable: Movable;
-	constructor(movable: Movable,Position:Person) {
+	constructor(movable: Movable,Position:IPerson) {
         this.positionBody = Position
 		this.movable = movable;
     }
@@ -59,7 +59,7 @@ let startSide=this.positionBody.side
 					return "aaa"
 				}
 			}, 50)
-			if (this.positionBody.stateDoubleJump === 1) {
+				if (this.positionBody.stateDoubleJump === 1) {
 				clearInterval(startJump)
 			}
 			this.positionBody.stateDoubleJump++

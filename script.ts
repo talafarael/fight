@@ -25,24 +25,12 @@ const person1 = new Person({ position: arry, player: 2, side: "left" });
 const move1 = new Move(person1);
 const hit1 = new Hit(person1);
 const healBarAndHit = new HealBarAndHit({ positionBody1: person, positionBody2: person1 });
-draw({ position: move.positionBody, position1: move1.positionBody });
+draw();
 
-function draw({ position, position1 }: { position: IClassInheritance; position1: IClassInheritance }) {
+function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillRect(position.positionBody.x, position.positionBody.y, position.positionBody.sizeX, position.positionBody.sizeY);
-    ctx.fillRect(position.positionHead.x, position.positionHead.y, position.positionHead.sizeX, position.positionHead.sizeY);
-    ctx.fillRect(position.positionHandRight.x, position.positionHandRight.y, position.positionHandRight.sizeX, position.positionHandRight.sizeY);
-    ctx.fillRect(position.positionHandLeft.x, position.positionHandLeft.y, position.positionHandLeft.sizeX, position.positionHandLeft.sizeY);
-    ctx.fillRect(position.positionLegLeft.x, position.positionLegLeft.y, position.positionLegRight.sizeX, position.positionLegRight.sizeY);
-    ctx.fillRect(position.positionLegRight.x, position.positionLegRight.y, position.positionLegLeft.sizeX, position.positionLegLeft.sizeY);
-
-    // second hero
-    ctx.fillRect(position1.positionBody.x, position1.positionBody.y, position1.positionBody.sizeX, position1.positionBody.sizeY);
-    ctx.fillRect(position1.positionHead.x, position1.positionHead.y, position1.positionHead.sizeX, position1.positionHead.sizeY);
-    ctx.fillRect(position1.positionHandRight.x, position1.positionHandRight.y, position1.positionHandRight.sizeX, position1.positionHandRight.sizeY);
-    ctx.fillRect(position1.positionHandLeft.x, position1.positionHandLeft.y, position1.positionHandLeft.sizeX, position1.positionHandLeft.sizeY);
-    ctx.fillRect(position1.positionLegLeft.x, position1.positionLegLeft.y, position1.positionLegRight.sizeX, position1.positionLegRight.sizeY);
-    ctx.fillRect(position1.positionLegRight.x, position1.positionLegRight.y, position1.positionLegLeft.sizeX, position1.positionLegLeft.sizeY);
+    person.draw(ctx);
+    person1.draw(ctx);
 }
 
 document.addEventListener("keydown", (event) => {
@@ -50,7 +38,7 @@ document.addEventListener("keydown", (event) => {
 
     if (event.key === "d" || event.key === "D") {
         move.moveForward();
-        draw({ position: person, position1:person1});
+        draw();
     }
 
     if (event.key === "q" || event.key === "Q") {
@@ -60,7 +48,7 @@ document.addEventListener("keydown", (event) => {
 
     if (event.key === "a" || event.key === "A") {
          move.moveBack();
-         draw({ position: person, position1:person1});
+         draw();
     }
     if (event.key === "s" || event.key === "S") {
       changeSide.changeSide();
@@ -85,12 +73,12 @@ document.addEventListener("keyup", (event) => {
 
 function moveInterval(counterEnd: keyof Person) {
     const start = setInterval(() => {
-        const position = move.positionBody;
+       console.log('aaaa')
 
-        if (move.positionBody[counterEnd] === 0) {
+        if (person[counterEnd] === 0) {
             clearInterval(start);
         }
 
-        draw({ position: position, position1: move1.positionBody });
+        draw();
     }, 50);
 }
