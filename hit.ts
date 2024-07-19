@@ -1,3 +1,4 @@
+import { ICheckHit } from "./checkHit/checkHit.js";
 import { IPerson, Person } from "./class.js";
 
 export interface IHit  {
@@ -6,9 +7,10 @@ export interface IHit  {
 }
 export class Hit implements IHit {
     private person: IPerson;
-
-    constructor(person: IPerson) {
+private checkHit:ICheckHit
+    constructor(person: IPerson,checkHit:ICheckHit) {
         this.person = person;
+        this.checkHit=checkHit
     }
 
     HitLeftHand() {
@@ -45,7 +47,7 @@ export class Hit implements IHit {
 
                 this.person.positionHandLeft.x += positionAddX;
                 position++;
-
+  this.checkHit.checkHit(this.person.player)
                 if (maximum === position) {
                     position *= -1;
                     positionAddY = 10;

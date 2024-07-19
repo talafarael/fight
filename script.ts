@@ -1,30 +1,35 @@
 
 import { ChangeSide } from "./changeSide.js";
+import { CheckHit } from "./checkHit/checkHit.js";
 import { HealBarAndHit,  Person } from "./class.js";
 import { Hit } from "./hit.js";
 import { Jump } from "./jump.js";
 import { Move } from "./move.js";
-import { IClassInheritance, IConstructor, IInheritance, IPosition, IPressedKeys } from "./type.js";
+import { IPosition, IPressedKeys } from "./type.js";
 
 const canvas: HTMLCanvasElement = document.getElementById("canvas") as HTMLCanvasElement; 
 const ctx: CanvasRenderingContext2D = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-let pressedKeys: IPressedKeys = {}; // Define pressedKeys here
+let pressedKeys: IPressedKeys = {}; 
 
 ctx.fillStyle = "green";
 canvas.width = 800;
 canvas.height = 600;
-// let jump = "";
+
+
 let arr: IPosition = { y: 300, x: 25, sizeX: 55, sizeY: 75 };
 let arry: IPosition = { y: 300, x: 325, sizeX: 55, sizeY: 75 };
 const person = new Person({ position: arr, player: 1, side: "right" });
+const person1 = new Person({ position: arry, player: 2, side: "left" });
 const move = new Move(person);
-const hit = new Hit(person);
+const checkHit=new CheckHit(person,person1)
+const hit = new Hit(person,checkHit);
 const jump = new Jump( move,person );
 const changeSide =new ChangeSide(person)
-const person1 = new Person({ position: arry, player: 2, side: "left" });
+
 const move1 = new Move(person1);
-const hit1 = new Hit(person1);
+const hit1 = new Hit(person1,checkHit);
+
 const healBarAndHit = new HealBarAndHit({ positionBody1: person, positionBody2: person1 });
 draw();
 
@@ -74,7 +79,7 @@ document.addEventListener("keyup", (event) => {
 
 function moveInterval(counterEnd: keyof Person) {
     const start = setInterval(() => {
-       console.log('aaaa')
+     
 
         if (person[counterEnd] === 0) {
             clearInterval(start);

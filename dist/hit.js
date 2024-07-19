@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Hit = void 0;
 class Hit {
-    constructor(person) {
+    constructor(person, checkHit) {
         this.person = person;
+        this.checkHit = checkHit;
     }
     HitLeftHand() {
         if (this.person.hit === 0) {
@@ -34,6 +35,7 @@ class Hit {
                 }
                 this.person.positionHandLeft.x += positionAddX;
                 position++;
+                this.checkHit.checkHit(this.person.player);
                 if (maximum === position) {
                     position *= -1;
                     positionAddY = 10;
