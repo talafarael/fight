@@ -1,5 +1,6 @@
 import { IPerson } from "../class";
 import { Health } from "../health/health";
+
 export interface ICheckHit{
   
         checkHit(player: 1 | 2): void;
@@ -8,10 +9,11 @@ export interface ICheckHit{
 export class CheckHit  {
     private positionBody1: IPerson;
     private positionBody2:IPerson
+    private health1:any
     constructor(person1: IPerson ,person2:IPerson) {
         this.positionBody1 = person1;
         this.positionBody2 = person2;
-        this.healthManager1 = new Health(this.positionBody1)
+        this.health1 = new Health(person1)
     }
 
     private examinationHitHead(playerHit:IPerson,playerGetHit:IPerson){
@@ -21,7 +23,7 @@ export class CheckHit  {
      
              if(playerHit.positionHandLeft.y>=playerGetHit.positionHead.y
                  && playerHit.positionHandLeft.y<=playerGetHit.positionHead.y+playerGetHit.positionHead.sizeY+playerHit.positionHandLeft.sizeY){
-                    console.log('aaahh')
+                    
                return true
                 }
                
@@ -50,8 +52,8 @@ if(examinationHitHead){
    this.positionBody1.statusHit=1
 		
 	console.log(this.positionBody2)
-    if(player==this.positionBody2.player){
-		this.positionBody1=playerHit
+    if(player==this.positionBody1.player){
+		// this.health1.headHitHealth()
 		
 	
 	}

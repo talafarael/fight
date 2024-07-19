@@ -6,7 +6,7 @@ class CheckHit {
     constructor(person1, person2) {
         this.positionBody1 = person1;
         this.positionBody2 = person2;
-        this.healthManager1 = new health_1.Health(this.positionBody1);
+        this.health1 = new health_1.Health(person1);
     }
     examinationHitHead(playerHit, playerGetHit) {
         if (playerHit.statusHit == 0) {
@@ -14,7 +14,6 @@ class CheckHit {
                 && playerHit.positionHandLeft.x + playerHit.positionHandLeft.sizeX <= playerGetHit.positionHead.x + playerGetHit.positionHead.sizeX + playerHit.positionHandLeft.sizeX) {
                 if (playerHit.positionHandLeft.y >= playerGetHit.positionHead.y
                     && playerHit.positionHandLeft.y <= playerGetHit.positionHead.y + playerGetHit.positionHead.sizeY + playerHit.positionHandLeft.sizeY) {
-                    console.log('aaahh');
                     return true;
                 }
             }
@@ -38,8 +37,8 @@ class CheckHit {
             playerHit.statusHit == 1;
             this.positionBody1.statusHit = 1;
             console.log(this.positionBody2);
-            if (player == this.positionBody2.player) {
-                this.positionBody1 = playerHit;
+            if (player == this.positionBody1.player) {
+                // this.health1.headHitHealth()
             }
         }
     }
