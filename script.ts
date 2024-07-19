@@ -1,7 +1,7 @@
 
 import { ChangeSide } from "./changeSide.js";
 import { CheckHit } from "./checkHit/checkHit.js";
-import { HealBarAndHit,  Person } from "./class.js";
+import {  Person } from "./class.js";
 import { Hit } from "./hit.js";
 import { Jump } from "./jump.js";
 import { Move } from "./move.js";
@@ -30,7 +30,6 @@ const changeSide =new ChangeSide(person)
 const move1 = new Move(person1);
 const hit1 = new Hit(person1,checkHit);
 
-const healBarAndHit = new HealBarAndHit({ positionBody1: person, positionBody2: person1 });
 draw();
 
 function draw() {

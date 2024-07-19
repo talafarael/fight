@@ -84,46 +84,8 @@ export class Person implements IPerson{
 }
 
 
-export class HealBarAndHit {
-	positionBody1: Person;
-	positionBody2: Person;
 
-	constructor({ positionBody1, positionBody2 }: { positionBody1: Person, positionBody2: Person }) {
-		this.positionBody1 = positionBody1;
-		this.positionBody2 = positionBody2;
-	}
-	checkHit(player:1|2){
-		let playerHit=this.positionBody1
-		let playerGetHit=this.positionBody2
-	
-       if(player==this.positionBody2.player){
-		playerHit=this.positionBody2
-		playerGetHit=this.positionBody1
-	
-	   }
-	if(playerHit.statusHit ==0){
-	   if(playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX>=playerGetHit.positionHead.x
-		&& playerHit.positionHandLeft.x+playerHit.positionHandLeft.sizeX<=playerGetHit.positionHead.x+playerGetHit.positionHead.sizeX+playerHit.positionHandLeft.sizeX){
 
-		if(playerHit.positionHandLeft.y>=playerGetHit.positionHead.y
-			&& playerHit.positionHandLeft.y<=playerGetHit.positionHead.y+playerGetHit.positionHead.sizeY+playerHit.positionHandLeft.sizeY){
-				playerHit.statusHit=1
-
-				this.positionBody1=playerHit
-		 this.positionBody2=playerGetHit
-		 if(player==this.positionBody2.player){
-			this.positionBody2=playerHit
-		 this.positionBody1=playerGetHit
-		
-		   }
-		  return true 
-}
-	   }
-	}
-return false
-
-	}
-}
 
 
 

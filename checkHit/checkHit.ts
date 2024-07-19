@@ -1,4 +1,5 @@
 import { IPerson } from "../class";
+import { Health } from "../health/health";
 export interface ICheckHit{
   
         checkHit(player: 1 | 2): void;
@@ -10,6 +11,7 @@ export class CheckHit  {
     constructor(person1: IPerson ,person2:IPerson) {
         this.positionBody1 = person1;
         this.positionBody2 = person2;
+        this.healthManager1 = new Health(this.positionBody1)
     }
 
     private examinationHitHead(playerHit:IPerson,playerGetHit:IPerson){
@@ -52,7 +54,7 @@ if(examinationHitHead){
 		this.positionBody1=playerHit
 		
 	
-	   }
+	}
 }
 
     }

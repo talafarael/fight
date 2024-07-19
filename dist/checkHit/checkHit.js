@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CheckHit = void 0;
+const health_1 = require("../health/health");
 class CheckHit {
     constructor(person1, person2) {
         this.positionBody1 = person1;
         this.positionBody2 = person2;
+        this.healthManager1 = new health_1.Health(this.positionBody1);
     }
     examinationHitHead(playerHit, playerGetHit) {
         if (playerHit.statusHit == 0) {

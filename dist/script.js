@@ -23,7 +23,6 @@ const jump = new jump_js_1.Jump(move, person);
 const changeSide = new changeSide_js_1.ChangeSide(person);
 const move1 = new move_js_1.Move(person1);
 const hit1 = new hit_js_1.Hit(person1, checkHit);
-const healBarAndHit = new class_js_1.HealBarAndHit({ positionBody1: person, positionBody2: person1 });
 draw();
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
