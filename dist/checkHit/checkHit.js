@@ -12,7 +12,8 @@ class CheckHit {
                 && playerHit.positionHandLeft.x + playerHit.positionHandLeft.sizeX <= playerGetHit.positionHead.x + playerGetHit.positionHead.sizeX + playerHit.positionHandLeft.sizeX) {
                 if (playerHit.positionHandLeft.y >= playerGetHit.positionHead.y
                     && playerHit.positionHandLeft.y <= playerGetHit.positionHead.y + playerGetHit.positionHead.sizeY + playerHit.positionHandLeft.sizeY) {
-                    console.log('aaaaaahhhhhhhhhhhha');
+                    console.log('aaahh');
+                    return true;
                 }
             }
         }
@@ -30,7 +31,15 @@ class CheckHit {
     }
     checkHit(player) {
         const { playerHit, playerGetHit } = this.findOutPlayer(player);
-        this.examinationHitHead(playerHit, playerGetHit);
+        const examinationHitHead = this.examinationHitHead(playerHit, playerGetHit);
+        if (examinationHitHead) {
+            playerHit.statusHit == 1;
+            this.positionBody1.statusHit = 1;
+            console.log(this.positionBody2);
+            if (player == this.positionBody2.player) {
+                this.positionBody1 = playerHit;
+            }
+        }
     }
 }
 exports.CheckHit = CheckHit;

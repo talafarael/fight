@@ -53,11 +53,11 @@ document.addEventListener("keydown", (event) => {
     }
 
     if (event.key === "a" || event.key === "A") {
-         move.moveBack();
-         draw();
+        move.moveBack();
+        draw();
     }
     if (event.key === "s" || event.key === "S") {
-      changeSide.changeSide();
+        changeSide.changeSide();
         draw();
     }
 
@@ -79,9 +79,7 @@ document.addEventListener("keyup", (event) => {
 
 function moveInterval(counterEnd: keyof Person) {
     const start = setInterval(() => {
-     
-
-        if (person[counterEnd] === 0) {
+       if (person[counterEnd] === 0) {
             clearInterval(start);
         }
 

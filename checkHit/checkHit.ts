@@ -19,7 +19,8 @@ export class CheckHit  {
      
              if(playerHit.positionHandLeft.y>=playerGetHit.positionHead.y
                  && playerHit.positionHandLeft.y<=playerGetHit.positionHead.y+playerGetHit.positionHead.sizeY+playerHit.positionHandLeft.sizeY){
-                  console.log('aaaaaahhhhhhhhhhhha')
+                    console.log('aaahh')
+               return true
                 }
                
      }
@@ -41,7 +42,18 @@ export class CheckHit  {
     }
     checkHit(player:1|2){
 const {playerHit,playerGetHit}=this.findOutPlayer(player)
-this.examinationHitHead(playerHit,playerGetHit)
+const examinationHitHead=this.examinationHitHead(playerHit,playerGetHit)
+if(examinationHitHead){
+    playerHit.statusHit == 1
+   this.positionBody1.statusHit=1
+		
+	console.log(this.positionBody2)
+    if(player==this.positionBody2.player){
+		this.positionBody1=playerHit
+		
+	
+	   }
+}
 
     }
 
