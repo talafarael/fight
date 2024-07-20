@@ -1,15 +1,22 @@
 import { IPerson } from "../class";
 
-export class Health{
+export interface IHealth {
+    
+    headHitHealth(): void;
+}
+
+export class Health implements IHealth {
     private positionBody: IPerson;
 
     constructor(positionBody: IPerson) {
         this.positionBody = positionBody;
     }
-    private minusHp(health:number){
-        this.positionBody.health=this.positionBody.health-health
+
+    private minusHp(health: number): void {
+        this.positionBody.health -= health;
     }
-    headHitHealth(){
-        this.minusHp(3)
+
+    public headHitHealth(): void {
+        this.minusHp(3);
     }
 }

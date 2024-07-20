@@ -6,7 +6,7 @@ class Health {
         this.positionBody = positionBody;
     }
     minusHp(health) {
-        this.positionBody.health = this.positionBody.health - health;
+        this.positionBody.health -= health;
     }
     headHitHealth() {
         this.minusHp(3);

@@ -2,9 +2,11 @@
 import { ChangeSide } from "./changeSide.js";
 import { CheckHit } from "./checkHit/checkHit.js";
 import {  Person } from "./class.js";
+import { Health } from "./health/health.js";
 import { Hit } from "./hit.js";
 import { Jump } from "./jump.js";
 import { Move } from "./move.js";
+import { Reclining } from "./reclining/reclining.js";
 import { IPosition, IPressedKeys } from "./type.js";
 
 const canvas: HTMLCanvasElement = document.getElementById("canvas") as HTMLCanvasElement; 
@@ -21,8 +23,12 @@ let arr: IPosition = { y: 300, x: 25, sizeX: 55, sizeY: 75 };
 let arry: IPosition = { y: 300, x: 325, sizeX: 55, sizeY: 75 };
 const person = new Person({ position: arr, player: 1, side: "right" });
 const person1 = new Person({ position: arry, player: 2, side: "left" });
+const health=new Health(person)
+const reclining=new Reclining(person)
+const reclining1=new Reclining(person1)
+const health1=new Health(person1)
 const move = new Move(person);
-const checkHit=new CheckHit(person,person1)
+const checkHit=new CheckHit(person,person1,health,health1,reclining,reclining1)
 const hit = new Hit(person,checkHit);
 const jump = new Jump( move,person );
 const changeSide =new ChangeSide(person)
