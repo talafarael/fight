@@ -57,7 +57,7 @@ return "right"
                 
                 this.health2.headHitHealth();
                 this.reclining2.recliningHeadHit()
-            }else{
+            }else{console.log('aaaa')
                 this.health1.headHitHealth();
             }
             
