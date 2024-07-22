@@ -28,7 +28,7 @@ if(playerGetHit.positionBody.x>=playerHit.positionBody.x){
 }
 return "right"
 }
-    private examinationHitHead(playerHit: IPerson, playerGetHit: IPerson): boolean {
+    private examinationHitHead(playerHit: IPerson, playerGetHit: IPerson){
         if (playerHit.statusHit == 0) {
             if (playerHit.positionHandLeft.x + playerHit.positionHandLeft.sizeX >= playerGetHit.positionHead.x
                 && playerHit.positionHandLeft.x + playerHit.positionHandLeft.sizeX <= playerGetHit.positionHead.x + playerGetHit.positionHead.sizeX + playerHit.positionHandLeft.sizeX) {
@@ -56,7 +56,7 @@ return "right"
             if (player === this.positionBody1.player) {
                 
                 this.health2.headHitHealth();
-                this.reclining2.recliningHeadHit()
+                this.reclining2.recliningHeadHit(side)
             }else{console.log('aaaa')
                 this.health1.headHitHealth();
             }

@@ -42,9 +42,10 @@ class CheckHit {
             playerHit.statusHit = 1;
             if (player === this.positionBody1.player) {
                 this.health2.headHitHealth();
-                this.reclining2.recliningHeadHit();
+                this.reclining2.recliningHeadHit(side);
             }
             else {
+                console.log('aaaa');
                 this.health1.headHitHealth();
             }
         }

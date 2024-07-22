@@ -9,10 +9,13 @@ export class Reclining{
     constructor(positionBody: IPerson) {
         this.positionBody = positionBody;
     }
-    recliningHeadHit(){
-        if (this.positionBody.side == "left") {
-            this.positionBody.positionHead.x =this.positionBody.positionHead.x + 10.5
-}
+    private left(){
+        this.positionBody.positionHead.x =this.positionBody.positionHead.x + 10.5
+    }
+    recliningHeadHit(side:'left'|'right'){
+        if('left'==side){
+            this.left()
+        }
     }
     
 }

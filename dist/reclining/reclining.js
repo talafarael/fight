@@ -5,9 +5,12 @@ class Reclining {
     constructor(positionBody) {
         this.positionBody = positionBody;
     }
-    recliningHeadHit() {
-        if (this.positionBody.side == "left") {
-            this.positionBody.positionHead.x = this.positionBody.positionHead.x + 10.5;
+    left() {
+        this.positionBody.positionHead.x = this.positionBody.positionHead.x + 10.5;
+    }
+    recliningHeadHit(side) {
+        if ('left' == side) {
+            this.left();
         }
     }
 }
