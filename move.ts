@@ -12,6 +12,7 @@ export class Move implements Movable {
     }
 
     moveForward() {
+     
         if (this.positionBody.positionBody.x < 725) {
             const distance = this.positionBody.side === 'left' ? 5 : 10;
             this._move(distance);
